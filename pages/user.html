@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raven Studio - Minha Conta</title>
+    <meta name="description" content="Minha conta no Raven Studio - Acompanhe seus agendamentos, favoritos e compras.">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/pageusuario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Bebas+Neue&family=Teko:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="theme-color" content="#000000">
+    <meta name="color-scheme" content="dark">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <span class="loading-mascot">🐦‍⬛</span>
+                <h2>RAVEN STUDIO</h2>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Carregando seus dados...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar" role="navigation" aria-label="Menu principal">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-mascot" aria-hidden="true">🐦‍⬛</span>
+                <span class="brand-text">RAVEN </span>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li role="none"><a href="/" role="menuitem" class="nav-link"><i class="fas fa-home"></i> Início</a></li>
+                <li role="none"><a href="/#about" role="menuitem" class="nav-link"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                <li role="none"><a href="/#portfolio" role="menuitem" class="nav-link"><i class="fas fa-images"></i> Portfólio</a></li>
+                <li role="none"><a href="/#testimonials" role="menuitem" class="nav-link"><i class="fas fa-star"></i> Depoimentos</a></li>
+                <li role="none"><a href="/#booking" role="menuitem" class="nav-link"><i class="fas fa-calendar-alt"></i> Agendamento</a></li>
+                <li role="none"><a href="/#contact" role="menuitem" class="nav-link"><i class="fas fa-envelope"></i> Contato</a></li>
+                <li role="none"><a href="user.html" role="menuitem" class="nav-link active"><i class="fas fa-user"></i> Minha Conta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="user-container">
+        <div class="container">
+            <div class="user-card">
+                <div class="user-header">
+                    <div class="user-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Avatar do usuário">
+                        <button class="edit-avatar" aria-label="Editar avatar">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <div class="user-info">
+                        <h1>Marina Silva</h1>
+                        <p>membro desde <span>15/03/2022</span></p>
+                    </div>
+                    <button class="logout-button" aria-label="Sair da conta">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+
+                <div class="user-tabs">
+                    <button class="tab-button active" data-tab="appointments">
+                        <i class="fas fa-calendar-alt"></i>
+                        Agendamentos
+                    </button>
+                    <button class="tab-button" data-tab="favorites">
+                        <i class="fas fa-heart"></i>
+                        Favoritos
+                    </button>
+                    <button class="tab-button" data-tab="purchases">
+                        <i class="fas fa-shopping-bag"></i>
+                        Compras
+                    </button>
+                    <button class="tab-button" data-tab="settings">
+                        <i class="fas fa-cog"></i>
+                        Configurações
+                    </button>
+                </div>
+
+                <div class="tab-content active" id="appointments-tab">
+                    <h2 class="tab-title">Próximos Agendamentos</h2>
+                    
+                    <div class="appointment-card">
+                        <div class="appointment-info">
+                            <h3>Tatuagem de Dragão</h3>
+                            <p><i class="fas fa-user"></i> Artista: Lucas</p>
+                            <p><i class="fas fa-clock"></i> 25/06/2024 - 14:00</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Raven Studio - Vila Madalena</p>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="action-button confirm">
+                                <i class="fas fa-check"></i> Confirmar
+                            </button>
+                            <button class="action-button reschedule">
+                                <i class="fas fa-calendar-alt"></i> Remarcar
+                            </button>
+                            <button class="action-button cancel">
+                                <i class="fas fa-times"></i> Cancelar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="appointment-card">
+                        <div class="appointment-info">
+                            <h3>Retoque - Flor Aquarela</h3>
+                            <p><i class="fas fa-user"></i> Artista: Ana</p>
+                            <p><i class="fas fa-clock"></i> 10/07/2024 - 11:00</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Raven Studio - Vila Madalena</p>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="action-button confirm">
+                                <i class="fas fa-check"></i> Confirmar
+                            </button>
+                            <button class="action-button reschedule">
+                                <i class="fas fa-calendar-alt"></i> Remarcar
+                            </button>
+                            <button class="action-button cancel">
+                                <i class="fas fa-times"></i> Cancelar
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="new-appointment-button">
+                        <i class="fas fa-plus"></i> Novo Agendamento
+                    </button>
+                </div>
+
+                <div class="tab-content" id="favorites-tab">
+                    <h2 class="tab-title">Seus Favoritos</h2>
+                    
+                    <div class="favorites-grid">
+                        <div class="favorite-item">
+                            <div class="favorite-image">
+                                <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=300&h=300&fit=crop" alt="Tatuagem de dragão">
+                            </div>
+                            <div class="favorite-info">
+                                <h3>Dragão Realista</h3>
+                                <p>Artista: Lucas</p>
+                                <div class="favorite-actions">
+                                    <button class="action-button">
+                                        <i class="fas fa-calendar-alt"></i> Agendar
+                                    </button>
+                                    <button class="action-button remove">
+                                        <i class="fas fa-trash"></i> Remover
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="favorite-item">
+                            <div class="favorite-image">
+                                <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?w=300&h=300&fit=crop" alt="Tatuagem floral">
+                            </div>
+                            <div class="favorite-info">
+                                <h3>Flores Aquarela</h3>
+                                <p>Artista: Ana</p>
+                                <div class="favorite-actions">
+                                    <button class="action-button">
+                                        <i class="fas fa-calendar-alt"></i> Agendar
+                                    </button>
+                                    <button class="action-button remove">
+                                        <i class="fas fa-trash"></i> Remover
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="purchases-tab">
+                    <h2 class="tab-title">Suas Compras</h2>
+                    
+                    <div class="purchase-card">
+                        <div class="purchase-header">
+                            <span class="purchase-id">#RAV-2024-1562</span>
+                            <span class="purchase-date">15/05/2024</span>
+                            <span class="purchase-status completed">Concluído</span>
+                        </div>
+                        <div class="purchase-items">
+                            <div class="purchase-item">
+                                <div class="item-image">
+                                    <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?w=100&h=100&fit=crop" alt="Tatuagem floral">
+                                </div>
+                                <div class="item-info">
+                                    <h3>Cuidados Pós-Tatuagem</h3>
+                                    <p>Kit completo para cuidados</p>
+                                </div>
+                                <div class="item-price">R$ 89,90</div>
+                            </div>
+                        </div>
+                        <div class="purchase-total">
+                            <span>Total:</span>
+                            <span>R$ 89,90</span>
+                        </div>
+                    </div>
+
+                    <div class="purchase-card">
+                        <div class="purchase-header">
+                            <span class="purchase-id">#RAV-2024-1428</span>
+                            <span class="purchase-date">02/03/2024</span>
+                            <span class="purchase-status delivered">Entregue</span>
+                        </div>
+                        <div class="purchase-items">
+                            <div class="purchase-item">
+                                <div class="item-image">
+                                    <img src="https://images.unsplash.com/photo-1611070264797-2b2c0cb87fe1?w=100&h=100&fit=crop" alt="Tatuagem de corvo">
+                                </div>
+                                <div class="item-info">
+                                    <h3>Produto para Manutenção</h3>
+                                    <p>Hidratante especial para tatuagens</p>
+                                </div>
+                                <div class="item-price">R$ 59,90</div>
+                            </div>
+                        </div>
+                        <div class="purchase-total">
+                            <span>Total:</span>
+                            <span>R$ 59,90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="settings-tab">
+                    <h2 class="tab-title">Configurações da Conta</h2>
+                    
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label for="user-name">Nome Completo</label>
+                            <input type="text" id="user-name" value="Marina Silva" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="user-email">E-mail</label>
+                            <input type="email" id="user-email" value="marina@exemplo.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="user-phone">Telefone</label>
+                            <input type="tel" id="user-phone" value="(11) 99999-9999" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="user-password">Alterar Senha</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="user-password" placeholder="Nova senha">
+                                <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="user-confirm">Confirmar Senha</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="user-confirm" placeholder="Confirmar nova senha">
+                                <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="save-button">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <span class="brand-mascot">🐦‍⬛</span>
+                        <h3>RAVEN STUDIO</h3>
+                    </div>
+                    <p>Transformando pele em arte desde 2016. Cada tatuagem conta uma história única.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Instagram do Raven Studio">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Facebook do Raven Studio">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="TikTok do Raven Studio">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube do Raven Studio">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>LINKS RÁPIDOS</h4>
+                    <ul>
+                        <li><a href="/">Início</a></li>
+                        <li><a href="/#about">Sobre</a></li>
+                        <li><a href="/#portfolio">Portfólio</a></li>
+                        <li><a href="/#testimonials">Depoimentos</a></li>
+                        <li><a href="/#booking">Agendamento</a></li>
+                        <li><a href="/#contact">Contato</a></li>
+                        <li><a href="user.html">Minha Conta</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>CONTATO</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>Rua das Artes, 123<br>Vila Madalena - São Paulo, SP</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <span>(11) 99999-9999</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span>contato@ravenstudio.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Raven Studio. Todos os direitos reservados.</p>
+                    <p class="footer-love">Feito com <i class="fas fa-heart" aria-hidden="true"></i> para amantes da arte corporal</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/home.js"></script>
+    <script src="/js/user.js"></script>
+</body>
+</html>
