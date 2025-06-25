@@ -1,0 +1,113 @@
+/* Contact Page Specific Styles */
+.contact-hero {
+    height: 70vh;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-card {
+    background: var(--gradient-dark);
+    border: 2px solid var(--soft-blue);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: var(--transition-smooth);
+    box-shadow: var(--soft-glow-blue);
+    text-align: center;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--soft-green);
+    box-shadow: var(--soft-glow-green);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-black);
+}
+
+.contact-card h3 {
+    font-family: var(--font-secondary);
+    color: var(--soft-blue);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.contact-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    font-family: var(--font-tech);
+}
+
+.map-link, .whatsapp-button, .email-button {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: var(--font-tech);
+    transition: var(--transition-smooth);
+    margin-top: 0.5rem;
+}
+
+.map-link {
+    background: transparent;
+    color: var(--soft-blue);
+    border: 1px solid var(--soft-blue);
+}
+
+.whatsapp-button {
+    background: #25D366;
+    color: #ffffff;
+}
+
+.email-button {
+    background: var(--soft-blue);
+    color: #ffffff;
+}
+
+.map-link:hover, .whatsapp-button:hover, .email-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Form Styles */
+.contact-form-section {
+    background: rgba(26, 26, 26, 0.3);
+    padding: 3rem 0;
+}
+
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--gradient-dark);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--soft-blue);
+    box-shadow: var(--soft-glow-blue);
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    flex: 1;
+    margin-bottom: 1rem;
+}
