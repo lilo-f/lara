@@ -1,0 +1,331 @@
+/* login.css completo e responsivo, centralizando tudo na tela */
+
+:root {
+  --primary-black: #000;
+  --secondary-black: #0a0a0a;
+  --dark-gray: #1a1a1a;
+  --medium-gray: #2a2a2a;
+  --light-gray: #3a3a3a;
+  --neon-blue: #00f5ff;
+  --neon-green: #39ff14;
+  --soft-blue: #4a90e2;
+  --text-light: #e0e0e0;
+  --error-red: #ff0040;
+
+  --font-primary: 'Teko', sans-serif;
+  --font-secondary: 'Bebas Neue', cursive;
+  --font-tech: 'Orbitron', monospace;
+
+  --transition-smooth: all 0.3s ease-in-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-primary);
+  background: var(--primary-black);
+  color: white;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--primary-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: var(--transition-smooth);
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-content h2 {
+  font-family: var(--font-secondary);
+  font-size: 2.5rem;
+  color: var(--neon-blue);
+}
+
+.loading-mascot {
+  font-size: 3rem;
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.loading-bar {
+  width: 250px;
+  height: 4px;
+  background: var(--dark-gray);
+  border: 1px solid var(--neon-blue);
+  margin: 1rem 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loading-progress {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+  animation: loadingProgress 2.5s ease-out forwards;
+}
+
+@keyframes loadingProgress {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid var(--neon-blue);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.login-brand {
+  text-align: center;
+}
+
+.login-brand .brand-mascot {
+  font-size: 2rem;
+  text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.login-brand h1 {
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  color: var(--neon-blue);
+  letter-spacing: 2px;
+}
+
+.login-header h2 {
+  font-family: var(--font-secondary);
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-header p {
+  font-family: var(--font-tech);
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group label {
+  font-family: var(--font-tech);
+  margin-bottom: 0.25rem;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper i {
+  position: absolute;
+  left: 1rem;
+  color: var(--neon-blue);
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border-radius: 8px;
+  background: var(--dark-gray);
+  border: 1px solid var(--medium-gray);
+  color: white;
+  font-family: var(--font-primary);
+  transition: var(--transition-smooth);
+}
+
+.input-wrapper input:focus {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 8px var(--neon-blue);
+  outline: none;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-size: 0.9rem;
+  text-align: right;
+  color: var(--text-light);
+  text-decoration: none;
+  font-family: var(--font-tech);
+}
+
+.forgot-password:hover {
+  color: var(--neon-blue);
+}
+
+.login-button, .modal-button {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+  border: none;
+  padding: 0.9rem;
+  border-radius: 8px;
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  color: var(--primary-black);
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.3);
+}
+
+.login-button:hover, .modal-button:hover {
+  transform: translateY(-2px);
+}
+
+.divider {
+  text-align: center;
+  font-family: var(--font-tech);
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0.5rem 0;
+}
+
+.google-login-button {
+  background: var(--medium-gray);
+  border: 1px solid var(--neon-blue);
+  padding: 0.75rem;
+  border-radius: 8px;
+  color: white;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.google-login-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.register-link {
+  font-family: var(--font-tech);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.register-link a {
+  color: var(--neon-blue);
+  text-decoration: none;
+}
+
+.login-footer {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--secondary-black);
+  border: 2px solid var(--neon-blue);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--neon-blue);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .login-card, .modal-content {
+    padding: 1.5rem;
+  }
+
+  .login-brand h1 {
+    font-size: 1.8rem;
+  }
+
+  .login-header h2 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Scrollbar personalizado para o login-card */
+.login-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.login-card::-webkit-scrollbar-track {
+  background: var(--secondary-black);
+}
+
+.login-card::-webkit-scrollbar-thumb {
+  background: var(--neon-blue);
+  border-radius: 3px;
+}
