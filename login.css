@@ -1,16 +1,15 @@
-/* login.css completo e responsivo, centralizando tudo na tela */
+/* login.css - Versão Profissional e Elegante (com correção de alinhamento) */
 
 :root {
-  --primary-black: #000;
-  --secondary-black: #0a0a0a;
+  --primary-black: #050505;
+  --secondary-black: #101010;
   --dark-gray: #1a1a1a;
   --medium-gray: #2a2a2a;
   --light-gray: #3a3a3a;
-  --neon-blue: #00f5ff;
-  --neon-green: #39ff14;
-  --soft-blue: #4a90e2;
+  --brand-blue: #4a90e2; /* Tom de azul mais sofisticado */
   --text-light: #e0e0e0;
-  --error-red: #ff0040;
+  --text-dark: #f5f5f5;
+  --error-red: #ff3b3b;
 
   --font-primary: 'Teko', sans-serif;
   --font-secondary: 'Bebas Neue', cursive;
@@ -29,8 +28,8 @@ html, body {
   height: 100%;
   font-family: var(--font-primary);
   background: var(--primary-black);
-  color: white;
-  overflow: hidden;
+  color: var(--text-dark);
+  overflow: hidden; /* Garante que a página não tenha scroll */
 }
 
 body {
@@ -40,6 +39,7 @@ body {
   padding: 1rem;
 }
 
+/* --- Loading Screen --- */
 .loading-screen {
   position: fixed;
   top: 0;
@@ -51,7 +51,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: var(--transition-smooth);
+  transition: opacity 0.5s ease;
 }
 
 .loading-screen.hidden {
@@ -62,20 +62,19 @@ body {
 .loading-content h2 {
   font-family: var(--font-secondary);
   font-size: 2.5rem;
-  color: var(--neon-blue);
+  color: var(--brand-blue);
+  letter-spacing: 2px;
 }
 
-.loading-mascot {
-  font-size: 3rem;
-  color: var(--neon-blue);
-  text-shadow: 0 0 10px var(--neon-blue);
+.loading-logo .brand-logo {
+  filter: drop-shadow(0 0 8px var(--brand-blue));
 }
 
 .loading-bar {
   width: 250px;
   height: 4px;
   background: var(--dark-gray);
-  border: 1px solid var(--neon-blue);
+  border: 1px solid var(--brand-blue);
   margin: 1rem 0;
   border-radius: 2px;
   overflow: hidden;
@@ -84,76 +83,86 @@ body {
 .loading-progress {
   width: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
-  animation: loadingProgress 2.5s ease-out forwards;
+  background: var(--brand-blue);
+  animation: loadingProgress 2s ease-out forwards;
 }
 
 @keyframes loadingProgress {
-  0% { width: 0; }
-  100% { width: 100%; }
+  to { width: 100%; }
 }
 
+/* --- Login Card Principal --- */
 .login-container {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  width: 100%;
 }
 
 .login-card {
   width: 100%;
-  max-width: 420px;
+  max-width: 400px; /* Levemente mais estreito para elegância */
   padding: 2rem;
-  background: rgba(10, 10, 10, 0.95);
-  border: 1px solid var(--neon-blue);
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  background: var(--secondary-black);
+  border: 1px solid var(--medium-gray);
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(74, 144, 226, 0.15); /* Sombra mais suave */
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  overflow-y: auto;
-  max-height: 90vh;
+  gap: 1.25rem; /* Espaçamento ajustado */
 }
 
 .login-brand {
-  text-align: center;
-}
-
-.login-brand .brand-mascot {
-  font-size: 2rem;
-  text-shadow: 0 0 5px var(--neon-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .login-brand h1 {
   font-family: var(--font-secondary);
-  font-size: 2rem;
-  color: var(--neon-blue);
-  letter-spacing: 2px;
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  letter-spacing: 3px;
+}
+
+.login-header {
+  text-align: center;
 }
 
 .login-header h2 {
   font-family: var(--font-secondary);
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.login-header p {
-  font-family: var(--font-tech);
-  font-size: 0.9rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
   color: var(--text-light);
 }
 
-.login-form {
+.login-header p {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  color: var(--text-light);
+  font-weight: 300;
+}
+
+/* --- Formulários --- */
+.login-form, .modal-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
 .form-group label {
   font-family: var(--font-tech);
-  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  text-transform: uppercase;
 }
 
 .input-wrapper {
@@ -165,33 +174,38 @@ body {
 .input-wrapper i {
   position: absolute;
   left: 1rem;
-  color: var(--neon-blue);
+  color: var(--brand-blue);
+  font-size: 0.9rem;
 }
 
 .input-wrapper input {
   width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
   border-radius: 8px;
   background: var(--dark-gray);
-  border: 1px solid var(--medium-gray);
-  color: white;
+  border: 1px solid var(--light-gray);
+  color: var(--text-dark);
   font-family: var(--font-primary);
+  font-size: 1.1rem;
   transition: var(--transition-smooth);
 }
 
 .input-wrapper input:focus {
-  border-color: var(--neon-blue);
-  box-shadow: 0 0 8px var(--neon-blue);
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
   outline: none;
 }
 
 .toggle-password {
   position: absolute;
   right: 1rem;
+  top: 50%; /* ADICIONADO */
+  transform: translateY(-50%); /* ADICIONADO */
   background: none;
   border: none;
   color: var(--text-light);
   cursor: pointer;
+  padding: 0.5rem;
 }
 
 .forgot-password {
@@ -200,48 +214,79 @@ body {
   color: var(--text-light);
   text-decoration: none;
   font-family: var(--font-tech);
+  margin-top: 0.25rem;
 }
-
 .forgot-password:hover {
-  color: var(--neon-blue);
+  color: var(--brand-blue);
 }
 
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-tech);
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+/* --- Botões --- */
 .login-button, .modal-button {
-  background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+  background: var(--brand-blue);
   border: none;
   padding: 0.9rem;
   border-radius: 8px;
   font-family: var(--font-secondary);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
   color: var(--primary-black);
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(0, 245, 255, 0.3);
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0); /* Sombra inicial transparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .login-button:hover, .modal-button:hover {
-  transform: translateY(-2px);
+  background: #5fa4ff;
+  box-shadow: 0 0 15px rgba(74, 144, 226, 0.5); /* Efeito de brilho */
 }
 
 .divider {
   text-align: center;
   font-family: var(--font-tech);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--text-light);
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
 }
 
 .google-login-button {
-  background: var(--medium-gray);
-  border: 1px solid var(--neon-blue);
+  background: transparent;
+  border: 1px solid var(--light-gray);
   padding: 0.75rem;
   border-radius: 8px;
   color: white;
   font-family: var(--font-primary);
+  font-size: 1.1rem;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
+  transition: var(--transition-smooth);
+}
+
+.google-login-button:hover {
+    border-color: var(--brand-blue);
+    color: var(--brand-blue);
 }
 
 .google-login-button img {
@@ -249,46 +294,79 @@ body {
   height: 20px;
 }
 
+.register-section {
+    margin-top: 0.5rem;
+}
+
 .register-link {
   font-family: var(--font-tech);
   text-align: center;
   font-size: 0.9rem;
+  color: var(--text-light);
 }
 
 .register-link a {
-  color: var(--neon-blue);
+  color: var(--brand-blue);
   text-decoration: none;
+  font-weight: bold;
 }
 
+/* --- Rodapé --- */
 .login-footer {
-  display: none;
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  font-family: var(--font-tech);
+  font-size: 0.8rem;
+  color: var(--light-gray);
 }
 
+.login-footer a {
+  color: var(--light-gray);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.login-footer a:hover {
+  color: var(--brand-blue);
+}
+
+/* --- Modais --- */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .modal.show {
   display: flex;
+  opacity: 1;
 }
 
 .modal-content {
   background: var(--secondary-black);
-  border: 2px solid var(--neon-blue);
-  padding: 2rem;
+  border: 1px solid var(--brand-blue);
+  padding: 2.5rem;
   border-radius: 12px;
   max-width: 420px;
   width: 90%;
   position: relative;
+  box-shadow: 0 0 30px rgba(74, 144, 226, 0.3);
 }
 
 .modal-close {
@@ -297,35 +375,26 @@ body {
   right: 1rem;
   background: none;
   border: none;
-  color: var(--neon-blue);
-  font-size: 1.2rem;
+  color: var(--brand-blue);
+  font-size: 1.5rem;
   cursor: pointer;
+  line-height: 1;
 }
 
-@media (max-width: 480px) {
-  .login-card, .modal-content {
-    padding: 1.5rem;
-  }
+.modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
 
-  .login-brand h1 {
+.modal-header h2 {
+    font-family: var(--font-secondary);
     font-size: 1.8rem;
-  }
-
-  .login-header h2 {
-    font-size: 1.4rem;
-  }
+    margin-bottom: 0.5rem;
 }
 
-/* Scrollbar personalizado para o login-card */
-.login-card::-webkit-scrollbar {
-  width: 6px;
-}
-
-.login-card::-webkit-scrollbar-track {
-  background: var(--secondary-black);
-}
-
-.login-card::-webkit-scrollbar-thumb {
-  background: var(--neon-blue);
-  border-radius: 3px;
+.modal-header p {
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-weight: 300;
 }

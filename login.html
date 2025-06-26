@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <meta name="theme-color" content="#000000" />
     <meta name="color-scheme" content="dark" />
 </head>
@@ -18,7 +17,10 @@
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
             <div class="loading-logo">
-                <span class="loading-mascot">🐦‍⬛</span>
+                 <svg class="brand-logo" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.23,13.06,9.25,11.25,11.3,9.12a1,1,0,0,0-1.42-1.42L7.6,10,6.1,8.47a1,1,0,0,0-1.42,1.42L6.2,11.45,4.2,13.37A6.93,6.93,0,0,0,4,17.42a7,7,0,0,0,14,0,6.85,6.85,0,0,0-.24-2.14,6.92,6.92,0,0,0-6.53-2.22Z" style="fill: #4a90e2;"></path>
+                    <path d="M19.78,5.1a1,1,0,0,0-1.1-1.32L12,5.27,9.79,3.12A1,1,0,0,0,8.37,4.54L10.74,7,9.45,8.19a1,1,0,1,0,1.42,1.42L12.57,8,6.11-1.33A1,1,0,0,0,19.78,5.1Z" style="fill: #4a90e2;"></path>
+                </svg>
                 <h2>RAVEN STUDIO</h2>
             </div>
             <div class="loading-bar">
@@ -28,7 +30,6 @@
         </div>
     </div>
 
-    <!-- Modal de Registro -->
     <div id="register-modal" class="modal" role="dialog" aria-labelledby="register-title" aria-hidden="true">
         <div class="modal-content">
             <button class="modal-close" id="register-close" aria-label="Fechar modal">
@@ -81,20 +82,13 @@
         </div>
     </div>
 
-    <!-- Login Principal -->
     <main class="login-container">
-        <div class="login-background">
-            <div class="neon-grid"></div>
-            <div class="floating-elements">
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-            </div>
-        </div>
-
         <div class="login-card">
             <div class="login-brand">
-                <span class="brand-mascot">🐦‍⬛</span>
+                 <svg class="brand-logo" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.23,13.06,9.25,11.25,11.3,9.12a1,1,0,0,0-1.42-1.42L7.6,10,6.1,8.47a1,1,0,0,0-1.42,1.42L6.2,11.45,4.2,13.37A6.93,6.93,0,0,0,4,17.42a7,7,0,0,0,14,0,6.85,6.85,0,0,0-.24-2.14,6.92,6.92,0,0,0-6.53-2.22Z" style="fill: #4a90e2;"></path>
+                    <path d="M19.78,5.1a1,1,0,0,0-1.1-1.32L12,5.27,9.79,3.12A1,1,0,0,0,8.37,4.54L10.74,7,9.45,8.19a1,1,0,1,0,1.42,1.42L12.57,8,6.11-1.33A1,1,0,0,0,19.78,5.1Z" style="fill: #4a90e2;"></path>
+                </svg>
                 <h1>RAVEN STUDIO</h1>
             </div>
             <div class="login-header">
@@ -137,22 +131,20 @@
                     <span>Entrar com Google</span>
                 </button>
                 <div class="register-section">
-                    <div class="divider"><span>OU</span></div>
-                    <div class="register-link">Não tem uma conta? <a href="#" id="show-register">Cadastre-se</a></div>
+                    <p class="register-link">Não tem uma conta? <a href="#" id="show-register">Cadastre-se</a></p>
                 </div>
             </form>
         </div>
-
-        <div class="login-footer">
-            <a href="/" class="back-home">
-                <i class="fas fa-arrow-left"></i>
-                Voltar para o site
-            </a>
-            <p>&copy; 2024 Raven Studio. Todos os direitos reservados.</p>
-        </div>
     </main>
 
-    <!-- Modal de Recuperação -->
+     <footer class="login-footer">
+        <a href="home.html" class="back-home">
+            <i class="fas fa-arrow-left"></i>
+            Voltar para o site
+        </a>
+        <p>&copy; 2025 Raven Studio. Todos os direitos reservados.</p>
+    </footer>
+
     <div id="forgot-modal" class="modal" role="dialog" aria-labelledby="forgot-title" aria-hidden="true">
         <div class="modal-content">
             <button class="modal-close" id="forgot-close" aria-label="Fechar modal">
@@ -160,10 +152,11 @@
             </button>
             <div class="modal-header">
                 <h2 id="forgot-title">RECUPERAR SENHA</h2>
-                <p>Digite seu e-mail para receber instruções de redefinição</p>
+                <p>Digite seu e-mail para receber as instruções</p>
             </div>
             <form id="forgot-form" class="modal-form">
                 <div class="form-group">
+                    <label for="forgot-email">E-mail</label>
                     <div class="input-wrapper">
                         <i class="fas fa-envelope"></i>
                         <input type="email" id="forgot-email" placeholder="seu@email.com" required />
@@ -177,7 +170,6 @@
         </div>
     </div>
 
-    <script src="/js/home.js"></script>
     <script src="/js/login.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
