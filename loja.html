@@ -3,238 +3,637 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raven Store - Loja Oficial do Estúdio de Tatuagem</title>
-    <meta name="description" content="Loja oficial do Raven Studio - Produtos para cuidados com tatuagens, roupas, acessórios e arte corporal.">
+    <title>Loja | Raven Studio</title>
+    <meta name="description" content="Loja oficial do Raven Studio - Os melhores produtos para tatuagem">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/loja.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Bebas+Neue&family=Teko:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="theme-color" content="#000000">
-    <meta name="color-scheme" content="dark">
+    <style>
+        /* Efeitos de fundo */
+        .shop-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom, #0a0a0a 0%, #000000 100%);
+            z-index: -2;
+        }
+        
+        .shop-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        
+        /* Container principal */
+        .shop-main {
+            min-height: 100vh;
+            padding: 100px 2rem 2rem;
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Cabeçalho */
+        .shop-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .shop-header h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3.5rem;
+            color: #3b82f6;
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .shop-header p {
+            color: #d1d5db;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Layout da loja */
+        .shop-content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2.5rem;
+        }
+        
+        /* Filtros */
+        .shop-filters {
+            background: rgba(15, 15, 15, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(10px);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+            transition: all 0.5s ease;
+        }
+        
+        .shop-filters:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        .filter-group {
+            margin-bottom: 2rem;
+        }
+        
+        .filter-group h3 {
+            font-family: 'Teko', sans-serif;
+            color: #3b82f6;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .filter-option input {
+            accent-color: #3b82f6;
+        }
+        
+        .filter-option label {
+            font-family: 'Orbitron', sans-serif;
+            color: #d1d5db;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-option label:hover {
+            color: #3b82f6;
+        }
+        
+        .price-range {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .price-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .filter-btn {
+            flex: 1;
+            padding: 0.8rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: #3b82f6;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        
+        .filter-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+        }
+        
+        .filter-btn.apply {
+            background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .filter-btn.apply:hover {
+            background: #3b82f6;
+        }
+        
+        /* Produtos */
+        .shop-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: rgba(15, 15, 15, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #3b82f6;
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
+            color: #000;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            z-index: 2;
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-category {
+            font-family: 'Orbitron', sans-serif;
+            color: #3b82f6;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .product-title {
+            font-family: 'Teko', sans-serif;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            line-height: 1;
+        }
+        
+        .product-description {
+            font-family: 'Orbitron', sans-serif;
+            color: #d1d5db;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .product-price {
+            font-family: 'Bebas Neue', cursive;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-price .old-price {
+            text-decoration: line-through;
+            color: #d1d5db;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .add-to-cart {
+            flex: 1;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .add-to-cart:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+        }
+        
+        .wishlist-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            border-radius: 8px;
+            color: #3b82f6;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .wishlist-btn:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+            color: #ef4444;
+        }
+        
+        .wishlist-btn.active {
+            color: #ef4444;
+            border-color: #ef4444;
+        }
+        
+        /* Controles da loja */
+        .shop-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            grid-column: 1 / -1;
+        }
+        
+        .search-box {
+            position: relative;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+            outline: none;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #3b82f6;
+        }
+        
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .sort-options label {
+            font-family: 'Orbitron', sans-serif;
+            color: #d1d5db;
+            font-size: 0.9rem;
+        }
+        
+        .sort-options select {
+            padding: 0.8rem 1rem;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .sort-options select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+            outline: none;
+        }
+        
+        /* Paginação */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+            grid-column: 1 / -1;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            border-radius: 8px;
+            color: #d1d5db;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .page-btn:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+            color: white;
+        }
+        
+        .page-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
+            border-color: transparent;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Responsivo */
+        @media (max-width: 1024px) {
+            .shop-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .shop-filters {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .shop-controls {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .shop-main {
+                padding: 80px 1rem 1rem;
+            }
+            
+            .shop-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .sort-options {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Barra de Navegação -->
-    <nav id="navbar" class="navbar" role="navigation" aria-label="Menu principal">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <span class="brand-mascot">🐦‍⬛</span>
-                <span class="brand-text">RAVEN STORE</span>
-            </div>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="nav-menu" role="menubar">
-                <li role="none"><a href="/pages/home.html" role="menuitem" class="nav-link"><i class="fas fa-home"></i> Início</a></li>
-                <li role="none"><a href="/pages/loja.html" role="menuitem" class="nav-link active"><i class="fas fa-store"></i> Loja</a></li>
-             <li role="none"><a href="/pages/artists.html" role="menuitem" class="nav-link"><i class="fas fa-star"></i> Artistas</a></li>
-                <li role="none"><a href="#offers" role="menuitem" class="nav-link"><i class="fas fa-tag"></i> Ofertas</a></li>
-            </ul>
-            <div class="nav-actions">
-                <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
-                    <button id="search-btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+  <nav id="navbar" class="navbar" role="navigation" aria-label="Menu principal">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="/pages/home.html" class="brand-link">
+                <img src="/img/logo.png" alt="Logo RAVEN" class="brand-logo">
+                <span class="brand-text">RAVEN</span>
+            </a>
+        </div>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu" role="menubar">
+            <li role="none"><a href="/pages/home.html" role="menuitem" class="nav-link"><i class="fas fa-home"></i> Início</a></li>
+            <li role="none"><a href="/pages/loja.html" role="menuitem" class="nav-link active"><i class="fas fa-store"></i> Loja</a></li>
+            <li role="none"><a href="/pages/artists.html" role="menuitem" class="nav-link"><i class="fas fa-star"></i> Artistas</a></li>
+            <li role="none"><a href="/pages/contato.html" role="menuitem" class="nav-link"><i class="fas fa-envelope"></i> Contato</a></li>
+            <li role="none"><a href="/pages/blog.html" role="menuitem" class="nav-link"><i class="fas fa-blog"></i> Blog</a></li>
+            <li role="none"><a href="/pages/game.html" role="menuitem" class="nav-link"><i class="fas fa-gamepad"></i>Game</a></li>
+        </ul>
+        <div class="nav-icons">
+            <a href="/pages/login.html" class="nav-icon" aria-label="Login"><i class="fas fa-user"></i></a>
+            <a href="/pages/carrinho.html" class="nav-icon" aria-label="Carrinho de compras"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </div>
+</nav>
+    <!-- Background -->
+    <div class="shop-bg"></div>
+    <div class="shop-particles" id="particles-js"></div>
+    
+    <!-- Main Content -->
+    <main class="shop-main">
+        <header class="shop-header">
+            <h1>LOJA RAVEN STUDIO</h1>
+            <p>Encontre os melhores equipamentos, tintas e acessórios para tatuagem profissional</p>
+        </header>
+        
+        <div class="shop-content">
+            <!-- Filtros -->
+            <aside class="shop-filters">
+                <div class="filter-group">
+                    <h3>Categorias</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-machines" checked>
+                            <label for="cat-machines">Máquinas</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-ink" checked>
+                            <label for="cat-ink">Tintas</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-needles" checked>
+                            <label for="cat-needles">Agulhas</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-power" checked>
+                            <label for="cat-power">Fontes</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="cat-accessories" checked>
+                            <label for="cat-accessories">Acessórios</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="cart-icon" id="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-count">0</span>
+                
+                <div class="filter-group">
+                    <h3>Preço</h3>
+                    <input type="range" class="price-range" min="0" max="1000" value="1000">
+                    <div class="price-values">
+                        <span>R$ 0</span>
+                        <span>R$ 1000+</span>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Marcas</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand-dragon" checked>
+                            <label for="brand-dragon">Dragonhawk</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand-kwadron" checked>
+                            <label for="brand-kwadron">Kwadron</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand-eternal" checked>
+                            <label for="brand-eternal">Eternal</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand-fk" checked>
+                            <label for="brand-fk">FK Irons</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn">Limpar</button>
+                    <button class="filter-btn apply">Aplicar</button>
+                </div>
+            </aside>
+            
+            <!-- Produtos -->
+            <div class="shop-products-container">
+                <div class="shop-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Pesquisar produtos..." id="search-input">
+                    </div>
+                    
+                    <div class="sort-options">
+                        <label for="sort-by">Ordenar por:</label>
+                        <select id="sort-by">
+                            <option value="popular">Mais populares</option>
+                            <option value="newest">Mais recentes</option>
+                            <option value="price-low">Preço: menor para maior</option>
+                            <option value="price-high">Preço: maior para menor</option>
+                            <option value="rating">Melhores avaliações</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="shop-products" id="products-grid">
+                    <!-- Produtos serão inseridos aqui via JavaScript -->
+                </div>
+                
+                <div class="pagination">
+                    <button class="page-btn disabled">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
-    </nav>
-
-    <!-- Hero Section da Loja -->
-    <section class="store-hero">
-        <div class="hero-background">
-            <div class="neon-grid"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-word">RAVEN</span>
-                <span class="title-word highlight">STORE</span>
-            </h1>
-            <p class="hero-subtitle">Produtos premium para cuidar da sua arte e expressar seu estilo</p>
-        </div>
-    </section>
-
-    <!-- Conteúdo Principal -->
-    <main class="store-container" id="main">
-        <!-- Seção de Destaques -->
-        <section class="featured-section reveal-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">DESTAQUES</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-subtitle">Os produtos mais populares da nossa loja</p>
-                </div>
-                <div class="featured-products" id="featured-products">
-                    <!-- Produtos em destaque serão carregados aqui -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Filtros e Produtos -->
-        <section class="products-section reveal-section" id="products">
-            <div class="container">
-                <div class="products-grid-container">
-                    <!-- Filtros -->
-                    <aside class="filters-sidebar">
-                        <h2>Filtrar Produtos</h2>
-                        
-                        <div class="filter-section">
-                            <h3>Categorias</h3>
-                            <ul class="category-list">
-                                <li><a href="#" data-category="all" class="active">Todos os produtos</a></li>
-                                <li><a href="#" data-category="care">Cuidados pós-tatuagem</a></li>
-                                <li><a href="#" data-category="clothing">Vestuário</a></li>
-                                <li><a href="#" data-category="accessories">Acessórios</a></li>
-                                <li><a href="#" data-category="art">Arte e Decoração</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="filter-section">
-                            <h3>Preço</h3>
-                            <div class="price-range">
-                                <input type="range" id="price-slider" min="0" max="500" value="500">
-                                <div class="price-values">
-                                    <span>R$0</span>
-                                    <span id="max-price-display">R$500</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-section">
-                            <h3>Avaliação</h3>
-                            <div class="rating-filter">
-                                <div class="star-rating">
-                                    <input type="radio" id="5-stars" name="rating" value="5">
-                                    <label for="5-stars">★★★★★</label>
-                                </div>
-                                <div class="star-rating">
-                                    <input type="radio" id="4-stars" name="rating" value="4">
-                                    <label for="4-stars">★★★★☆</label>
-                                </div>
-                                <div class="star-rating">
-                                    <input type="radio" id="3-stars" name="rating" value="3">
-                                    <label for="3-stars">★★★☆☆</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button id="clear-filters" class="btn">Limpar Filtros</button>
-                    </aside>
-
-                    <!-- Produtos -->
-                    <div class="products-main">
-                        <div class="products-header">
-                            <h2>Nossos Produtos</h2>
-                            <div class="sort-options">
-                                <label for="sort-by">Ordenar por:</label>
-                                <select id="sort-by">
-                                    <option value="default">Padrão</option>
-                                    <option value="price-asc">Preço: menor para maior</option>
-                                    <option value="price-desc">Preço: maior para menor</option>
-                                    <option value="rating">Melhor avaliados</option>
-                                    <option value="name">Nome (A-Z)</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="products-grid" id="products-grid">
-                            <!-- Produtos serão carregados aqui via JavaScript -->
-                        </div>
-                        
-                        <div class="pagination">
-                            <button id="prev-page" class="pagination-btn" disabled>
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <span id="page-indicator">Página 1 de 3</span>
-                            <button id="next-page" class="pagination-btn">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Ofertas -->
-        <section class="offers-section reveal-section" id="offers">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">OFERTAS ESPECIAIS</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-subtitle">Descontos exclusivos para você</p>
-                </div>
-                <div class="offers-grid" id="offers-grid">
-                    <!-- Ofertas serão carregadas aqui -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Marcas -->
-        <section class="brands-section reveal-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">MARCAS PARCEIRAS</h2>
-                    <div class="title-underline"></div>
-                </div>
-                <div class="brands-grid">
-                    <div class="brand-item">
-                        <img src="https://via.placeholder.com/150x80?text=TattooCare" alt="TattooCare" loading="lazy">
-                    </div>
-                    <div class="brand-item">
-                        <img src="https://via.placeholder.com/150x80?text=InkLife" alt="InkLife" loading="lazy">
-                    </div>
-                    <div class="brand-item">
-                        <img src="https://via.placeholder.com/150x80?text=ArtSkin" alt="ArtSkin" loading="lazy">
-                    </div>
-                    <div class="brand-item">
-                        <img src="https://via.placeholder.com/150x80?text=Raven+Ink" alt="Raven Ink" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
-
-    <!-- Modal do Carrinho -->
-    <div class="cart-modal" id="cart-modal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h3>Seu Carrinho</h3>
-                <button class="close-cart" aria-label="Fechar carrinho">&times;</button>
-            </div>
-            <div class="cart-items" id="cart-items">
-                <!-- Itens do carrinho serão carregados aqui -->
-                <div class="empty-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                    <p>Seu carrinho está vazio</p>
-                    <a href="#products" class="btn">Continuar Comprando</a>
-                </div>
-            </div>
-            <div class="cart-summary">
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span id="cart-total">R$0.00</span>
-                </div>
-                <button class="btn checkout-btn">Finalizar Compra</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Detalhes do Produto -->
-    <div class="product-modal" id="product-modal">
-        <div class="product-modal-content">
-            <button class="close-modal" aria-label="Fechar modal">&times;</button>
-            <div class="product-modal-body" id="product-modal-body">
-                <!-- Conteúdo do modal será preenchido via JavaScript -->
-            </div>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -242,9 +641,9 @@
                 <div class="footer-brand">
                     <div class="brand-logo">
                         <span class="brand-mascot">🐦‍⬛</span>
-                        <h3>RAVEN STORE</h3>
+                        <h3>RAVEN STUDIO</h3>
                     </div>
-                    <p>Produtos premium para cuidar da sua arte e expressar seu estilo. Parte do Raven Studio.</p>
+                    <p>Transformando pele em arte desde 2016. Cada tatuagem conta uma história única.</p>
                     <div class="social-icons">
                         <a href="#" class="social-icon" aria-label="Instagram do Raven Studio">
                             <i class="fab fa-instagram"></i>
@@ -263,59 +662,417 @@
                 <div class="footer-links">
                     <h4>LINKS RÁPIDOS</h4>
                     <ul>
-                        <li><a href="/pages/home.html">Início</a></li>
-                        <li><a href="/loja">Loja</a></li>
-                        <li><a href="#products">Produtos</a></li>
-                        <li><a href="#offers">Ofertas</a></li>
-                        <li><a href="#">Termos de Serviço</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                        <li><a href="#booking">Agendamento</a></li>
+                        <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>ATENDIMENTO</h4>
+                    <h4>CONTATO</h4>
                     <div class="footer-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>loja@ravenstudio.com</span>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>Rua das Artes, 123<br>Vila Madalena - São Paulo, SP</span>
                     </div>
                     <div class="footer-contact-item">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <span>(11) 99999-9999</span>
                     </div>
                     <div class="footer-contact-item">
-                        <i class="fas fa-clock"></i>
-                        <span>Seg-Sex: 9h-18h</span>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-truck"></i>
-                        <span>Frete para todo Brasil</span>
-                    </div>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>NEWSLETTER</h4>
-                    <p>Receba ofertas exclusivas e novidades</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Seu melhor e-mail" required>
-                        <button type="submit" class="btn">Assinar</button>
-                    </form>
-                    <div class="payment-methods">
-                        <i class="fab fa-cc-visa"></i>
-                        <i class="fab fa-cc-mastercard"></i>
-                        <i class="fab fa-cc-paypal"></i>
-                        <i class="fab fa-btc"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span>contato@ravenstudio.com</span>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="footer-divider"></div>
                 <div class="footer-copyright">
-                    <p>&copy; 2024 Raven Store. Todos os direitos reservados.</p>
-                    <p class="footer-love">Feito com <i class="fas fa-heart"></i> para amantes da arte corporal</p>
+                    <p>&copy; 2024 Raven Studio. Todos os direitos reservados.</p>
+                    <p class="footer-love">Feito com <i class="fas fa-heart" aria-hidden="true"></i> para amantes da arte corporal</p>
                 </div>
             </div>
         </div>
     </footer>
-
+ <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
     <script src="/js/home.js"></script>
-    <script src="/js/loja.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Inicializar partículas
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: "#3b82f6" },
+                shape: { type: "circle" },
+                opacity: { value: 0.3, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.2, width: 1 },
+                move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" }
+                }
+            }
+        });
+        
+        // Dados dos produtos (em uma aplicação real, viriam de uma API)
+        const products = [
+            {
+                id: 'prod1',
+                name: 'Máquina de Tatuagem Dragonhawk',
+                category: 'Machines',
+                brand: 'Dragonhawk',
+                price: 24990, // R$ 249,90 em centavos
+                oldPrice: 29990,
+                image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e',
+                rating: 4.8,
+                isNew: true,
+                description: 'Máquina rotativa profissional com ajuste de profundidade e velocidade controlável.'
+            },
+            {
+                id: 'prod2',
+                name: 'Tinta Preta Eternal',
+                category: 'Ink',
+                brand: 'Eternal',
+                price: 8990, // R$ 89,90 em centavos
+                oldPrice: 9990,
+                image: 'https://images.unsplash.com/photo-1583947581924-a8b1cf315a3d',
+                rating: 4.9,
+                isNew: false,
+                description: 'Tinta preta de alta qualidade com pigmentação intensa e duradoura.'
+            },
+            {
+                id: 'prod3',
+                name: 'Agulhas Descartáveis Kwadron',
+                category: 'Needles',
+                brand: 'Kwadron',
+                price: 4590, // R$ 45,90 em centavos
+                image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae',
+                rating: 4.7,
+                isNew: true,
+                description: 'Pacote com 25 agulhas descartáveis esterilizadas para contorno.'
+            },
+            {
+                id: 'prod4',
+                name: 'Fonte Alimentação FK Irons',
+                category: 'Power',
+                brand: 'FK Irons',
+                price: 59990, // R$ 599,90 em centavos
+                image: 'https://images.unsplash.com/photo-1551269901-5c5e14c25df7',
+                rating: 4.9,
+                isNew: false,
+                description: 'Fonte de alimentação digital com display LCD e controle preciso de voltagem.'
+            },
+            {
+                id: 'prod5',
+                name: 'Kit Iniciante Tattoo',
+                category: 'Accessories',
+                brand: 'Dragonhawk',
+                price: 34990, // R$ 349,90 em centavos
+                oldPrice: 39990,
+                image: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519',
+                rating: 4.6,
+                isNew: true,
+                description: 'Kit completo para iniciantes com máquina, fontes, tintas e acessórios.'
+            },
+            {
+                id: 'prod6',
+                name: 'Tinta Vermelha Eternal',
+                category: 'Ink',
+                brand: 'Eternal',
+                price: 8990, // R$ 89,90 em centavos
+                image: 'https://images.unsplash.com/photo-1533038590840-1cde6e668a91',
+                rating: 4.7,
+                isNew: false,
+                description: 'Tinta vermelha vibrante com excelente cobertura e durabilidade.'
+            },
+            {
+                id: 'prod7',
+                name: 'Máquina de Sombra FK Irons',
+                category: 'Machines',
+                brand: 'FK Irons',
+                price: 37990, // R$ 379,90 em centavos
+                image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd',
+                rating: 4.9,
+                isNew: false,
+                description: 'Máquina especializada para sombreamento e preenchimento de cores.'
+            },
+            {
+                id: 'prod8',
+                name: 'Luvas Descartáveis',
+                category: 'Accessories',
+                brand: 'Kwadron',
+                price: 1990, // R$ 19,90 em centavos
+                image: 'https://images.unsplash.com/photo-1584634731339-252c58ab7354',
+                rating: 4.5,
+                isNew: false,
+                description: 'Pacote com 100 luvas de látex descartáveis para proteção.'
+            }
+        ];
+        
+        // Classe para gerenciar a loja
+        class Shop {
+            constructor() {
+                this.products = products;
+                this.filteredProducts = [...products];
+                this.cart = JSON.parse(localStorage.getItem('ravenStudioCart')) || [];
+                this.wishlist = JSON.parse(localStorage.getItem('ravenStudioWishlist')) || [];
+                
+                this.init();
+            }
+            
+            init() {
+                this.renderProducts();
+                this.setupEventListeners();
+            }
+            
+            renderProducts() {
+                const container = document.getElementById('products-grid');
+                container.innerHTML = '';
+                
+                if (this.filteredProducts.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-shop" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                            <i class="fas fa-search" style="font-size: 3rem; color: rgba(59, 130, 246, 0.5); margin-bottom: 1.5rem;"></i>
+                            <h3 style="font-family: 'Bebas Neue', cursive; color: white; font-size: 1.8rem; margin-bottom: 1rem;">Nenhum produto encontrado</h3>
+                            <p style="font-family: 'Orbitron', sans-serif; color: #d1d5db; margin-bottom: 2rem;">Tente ajustar seus filtros de busca</p>
+                            <button class="empty-cart-btn" id="reset-filters-btn" style="padding: 1rem 2rem; background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%); border: none; border-radius: 12px; color: #000; font-weight: 700; font-family: 'Bebas Neue', cursive; cursor: pointer; transition: all 0.3s ease; font-size: 1.1rem; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);">
+                                LIMPAR FILTROS
+                            </button>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                this.filteredProducts.forEach(product => {
+                    const isInWishlist = this.wishlist.includes(product.id);
+                    const isInCart = this.cart.some(item => item.id === product.id);
+                    
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        ${product.isNew ? '<span class="product-badge">NOVO</span>' : ''}
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">${product.category}</span>
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <div class="product-price">
+                                ${this.formatPrice(product.price)}
+                                ${product.oldPrice ? `<span class="old-price">${this.formatPrice(product.oldPrice)}</span>` : ''}
+                            </div>
+                            <div class="product-actions">
+                                <button class="add-to-cart" data-id="${product.id}" ${isInCart ? 'disabled' : ''}>
+                                    <i class="fas fa-shopping-cart"></i>
+                                    ${isInCart ? 'NO CARRINHO' : 'ADICIONAR'}
+                                </button>
+                                <button class="wishlist-btn ${isInWishlist ? 'active' : ''}" data-id="${product.id}">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(productCard);
+                });
+            }
+            
+            formatPrice(priceInCents) {
+                // Converte de centavos para reais e formata
+                return (priceInCents / 100).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                    minimumFractionDigits: 2
+                });
+            }
+            
+            filterProducts() {
+                // Em uma aplicação real, isso seria mais complexo com filtros reais
+                // Aqui é apenas uma demonstração
+                const searchInput = document.getElementById('search-input').value.toLowerCase();
+                const sortBy = document.getElementById('sort-by').value;
+                
+                this.filteredProducts = this.products.filter(product => 
+                    product.name.toLowerCase().includes(searchInput) ||
+                    product.description.toLowerCase().includes(searchInput)
+                );
+                
+                // Ordenação
+                switch (sortBy) {
+                    case 'price-low':
+                        this.filteredProducts.sort((a, b) => a.price - b.price);
+                        break;
+                    case 'price-high':
+                        this.filteredProducts.sort((a, b) => b.price - a.price);
+                        break;
+                    case 'newest':
+                        this.filteredProducts.sort((a, b) => b.isNew - a.isNew);
+                        break;
+                    case 'rating':
+                        this.filteredProducts.sort((a, b) => b.rating - a.rating);
+                        break;
+                    default: // 'popular'
+                        this.filteredProducts.sort((a, b) => b.rating - a.rating);
+                }
+                
+                this.renderProducts();
+            }
+            
+            addToCart(productId) {
+                const product = this.products.find(p => p.id === productId);
+                
+                if (product) {
+                    const cartItem = {
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: 1
+                    };
+                    
+                    this.cart.push(cartItem);
+                    localStorage.setItem('ravenStudioCart', JSON.stringify(this.cart));
+                    
+                    // Mostrar notificação
+                    this.showNotification(`${product.name} foi adicionado ao carrinho!`);
+                    
+                    // Atualizar a exibição
+                    this.renderProducts();
+                }
+            }
+            
+            toggleWishlist(productId) {
+                const index = this.wishlist.indexOf(productId);
+                
+                if (index === -1) {
+                    this.wishlist.push(productId);
+                    this.showNotification('Produto adicionado à lista de desejos!');
+                } else {
+                    this.wishlist.splice(index, 1);
+                    this.showNotification('Produto removido da lista de desejos!');
+                }
+                
+                localStorage.setItem('ravenStudioWishlist', JSON.stringify(this.wishlist));
+                this.renderProducts();
+            }
+            
+            showNotification(message) {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, #3b82f6, #22c55e);
+                    color: #000;
+                    padding: 1rem 2rem;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                    z-index: 1000;
+                    font-family: 'Bebas Neue', cursive;
+                    font-size: 1.2rem;
+                    animation: slideIn 0.3s ease-out;
+                `;
+                notification.innerHTML = `
+                    <i class="fas fa-check-circle"></i> ${message}
+                `;
+                document.body.appendChild(notification);
+                
+                // Remover notificação após 3 segundos
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease-out';
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 300);
+                }, 3000);
+            }
+            
+            setupEventListeners() {
+                // Filtro de busca
+                document.getElementById('search-input').addEventListener('input', () => {
+                    this.filterProducts();
+                });
+                
+                // Ordenação
+                document.getElementById('sort-by').addEventListener('change', () => {
+                    this.filterProducts();
+                });
+                
+                // Botão de adicionar ao carrinho (delegação de eventos)
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                        const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+                        const productId = button.dataset.id;
+                        this.addToCart(productId);
+                    }
+                    
+                    // Botão de lista de desejos
+                    if (e.target.classList.contains('wishlist-btn') || e.target.closest('.wishlist-btn')) {
+                        const button = e.target.classList.contains('wishlist-btn') ? e.target : e.target.closest('.wishlist-btn');
+                        const productId = button.dataset.id;
+                        this.toggleWishlist(productId);
+                    }
+                    
+                    // Botão de resetar filtros (quando não há produtos)
+                    if (e.target.id === 'reset-filters-btn' || e.target.closest('#reset-filters-btn')) {
+                        document.getElementById('search-input').value = '';
+                        document.getElementById('sort-by').value = 'popular';
+                        this.filterProducts();
+                    }
+                });
+                
+                // Filtros (demonstração)
+                document.querySelectorAll('.filter-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (button.classList.contains('apply')) {
+                            this.showNotification('Filtros aplicados com sucesso!');
+                            // Em uma aplicação real, aqui aplicaria os filtros
+                        } else {
+                            // Limpar filtros
+                            document.querySelectorAll('.filter-option input').forEach(input => {
+                                input.checked = true;
+                            });
+                            document.querySelector('.price-range').value = 1000;
+                            this.showNotification('Filtros limpos!');
+                        }
+                    });
+                });
+            }
+        }
+        
+        // Inicializar a loja quando a página carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            const shop = new Shop();
+            
+            // Adicionar estilos de animação
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
 </body>
 </html>
