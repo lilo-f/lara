@@ -1139,19 +1139,12 @@ transition: all 0.3s ease;
 
 /* Responsivo */
 @media (max-width: 768px) {
-    .cart-tabs {
-        overflow-x: auto;
-        white-space: nowrap;
-        padding-bottom: 5px;
-    }
-    
-    .cart-tab {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-    }
-    
     .form-row {
         flex-direction: column;
-        gap: 0;
+        gap: 1rem; /* Mantém um gap mesmo em coluna */
+    }
+    
+    .form-group {
+        width: 100%;
     }
 }

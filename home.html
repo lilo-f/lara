@@ -174,6 +174,8 @@
             </div>
         </section>
 
+
+
         <!-- About Section -->
         <section id="about" class="about reveal-section">
             <div class="container">
@@ -211,6 +213,10 @@
             </div>
         </section>
 
+
+
+
+        
         <!-- Portfolio Section -->
         <section id="portfolio" class="portfolio reveal-section">
             <div class="container">
@@ -296,66 +302,134 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials reveal-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">DEPOIMENTOS</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-subtitle">O que nossos clientes dizem</p>
+    
+<!-- Quiz Profissional -->
+<section id="tattoo-quiz" class="pro-quiz">
+    <div class="container">
+        <!-- Introdução -->
+        <div class="quiz-intro" id="quiz-intro">
+            <div class="intro-content">
+                <h2>DESCUBRA SEU ESTILO DE TATUAGEM</h2>
+                <p>Responda nosso quiz e encontre o estilo que combina com sua personalidade</p>
+                <button id="start-quiz" class="cta-button">
+                    <span>INICIAR QUIZ</span>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Perguntas -->
+        <div class="quiz-questions" id="quiz-questions" style="display:none">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-bar" id="quiz-progress"></div>
                 </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-item">
-                        <div class="testimonial-content">
-                            <div class="stars" aria-label="5 estrelas">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                            </div>
-                            <p>"Experiência incrível! O Raven Studio superou todas as minhas expectativas. O profissionalismo e a arte são incomparáveis."</p>
-                            <div class="testimonial-author">
-                                <strong>Marina Silva</strong>
-                                <span>Cliente desde 2022</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-content">
-                            <div class="stars" aria-label="5 estrelas">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                            </div>
-                            <p>"Ambiente acolhedor, equipamentos de primeira e artistas talentosíssimos. Minha tatuagem ficou perfeita!"</p>
-                            <div class="testimonial-author">
-                                <strong>Carlos Mendes</strong>
-                                <span>Cliente desde 2021</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="testimonial-content">
-                            <div class="stars" aria-label="5 estrelas">
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                            </div>
-                            <p>"Atendimento personalizado do início ao fim. Recomendo de olhos fechados para quem busca qualidade e segurança."</p>
-                            <div class="testimonial-author">
-                                <strong>Ana Costa</strong>
-                                <span>Cliente desde 2020</span>
-                            </div>
-                        </div>
-                    </div>
+                <h3 id="current-question">Pergunta <span id="current-q-number">1</span>/<span id="total-questions">4</span></h3>
+            </div>
+
+            <div class="question-container" id="question-container">
+                <!-- Perguntas serão inseridas aqui via JS -->
+            </div>
+        </div>
+
+        <!-- Resultado -->
+        <div class="quiz-result" id="quiz-result" style="display:none">
+            <div class="result-content">
+                <h3>SEU ESTILO IDEAL É:</h3>
+                <div class="result-style" id="result-style"></div>
+                <p id="result-description"></p>
+                
+                <div class="style-features">
+                    <h4>CARACTERÍSTICAS PRINCIPAIS:</h4>
+                    <ul id="style-features"></ul>
+                </div>
+
+                <div class="result-gallery" id="result-gallery"></div>
+                
+                <div class="artist-match">
+                    <h4>ARTISTAS RECOMENDADOS:</h4>
+                    <div id="artist-match"></div>
+                </div>
+
+                <button id="restart-quiz" class="cta-button">
+                    <span>FAZER NOVAMENTE</span>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12,4C14.1,4 16.1,4.8 17.6,6.3C20.7,9.4 20.7,14.5 17.6,17.6C15.8,19.5 13.3,20.2 10.9,19.9L11.4,17.9C13.1,18.1 14.9,17.5 16.2,16.2C18.5,13.9 18.5,10.1 16.2,7.8C15.1,6.7 13.5,6 12,6V10.6L7,5.6L12,0.6V4M6.3,17.6C3.7,15 3.3,11 5.1,7.9L6.6,9.4C5.5,11.6 5.9,14.4 7.8,16.2C8.3,16.7 8.9,17.1 9.6,17.4L9,19.4C8,19 7.1,18.4 6.3,17.6Z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="tattoo-gallery" class="gallery-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">NOSSA GALERIA</h2>
+            <div class="title-underline"></div>
+            <p class="section-subtitle">Explore nossos trabalhos incríveis, filtrados por estilo, artista ou local do corpo.</p>
+        </div>
+
+        <div class="filter-buttons" role="group" aria-label="Filtros da galeria de tatuagens">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="realismo">Realismo</button>
+            <button class="filter-btn" data-filter="blackwork">Blackwork</button>
+            <button class="filter-btn" data-filter="aquarela">Aquarela</button>
+            <button class="filter-btn" data-filter="geometria">Geométrico</button>
+            <button class="filter-btn" data-filter="artist-joao">João Silva</button>
+            <button class="filter-btn" data-filter="artist-maria">Maria Souza</button>
+            <button class="filter-btn" data-filter="arm">Braço</button>
+            <button class="filter-btn" data-filter="leg">Perna</button>
+            <button class="filter-btn" data-filter="back">Costas</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid">
+            <div class="gallery-item" data-style="realismo" data-artist="joao" data-body-part="arm">
+                <img src="https://via.placeholder.com/400x400/000000/FFFFFF?text=Tattoo+Realismo+1" alt="Tatuagem de realismo no braço por João Silva">
+                <div class="item-overlay">
+                    <h3>Realismo - Braço</h3>
+                    <p>Artista: João Silva</p>
                 </div>
             </div>
-        </section>
+            <div class="gallery-item" data-style="blackwork" data-artist="maria" data-body-part="leg">
+                <img src="https://via.placeholder.com/400x400/000000/FFFFFF?text=Tattoo+Blackwork+1" alt="Tatuagem blackwork na perna por Maria Souza">
+                <div class="item-overlay">
+                    <h3>Blackwork - Perna</h3>
+                    <p>Artista: Maria Souza</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-style="aquarela" data-artist="joao" data-body-part="back">
+                <img src="https://via.placeholder.com/400x400/000000/FFFFFF?text=Tattoo+Aquarela+1" alt="Tatuagem aquarela nas costas por João Silva">
+                <div class="item-overlay">
+                    <h3>Aquarela - Costas</h3>
+                    <p>Artista: João Silva</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-style="geometria" data-artist="maria" data-body-part="arm">
+                <img src="https://via.placeholder.com/400x400/000000/FFFFFF?text=Tattoo+Geometria+1" alt="Tatuagem geométrica no braço por Maria Souza">
+                <div class="item-overlay">
+                    <h3>Geométrico - Braço</h3>
+                    <p>Artista: Maria Souza</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-style="realismo" data-artist="maria" data-body-part="leg">
+                <img src="https://via.placeholder.com/400x400/000000/FFFFFF?text=Tattoo+Realismo+2" alt="Tatuagem de realismo na perna por Maria Souza">
+                <div class="item-overlay">
+                    <h3>Realismo - Perna</h3>
+                    <p>Artista: Maria Souza</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-style="blackwork" data-artist="joao" data-body-part="back">
+                <img src="https://via.placeholder.com/400x400/000000/FFFFFF?text=Tattoo+Blackwork+2" alt="Tatuagem blackwork nas costas por João Silva">
+                <div class="item-overlay">
+                    <h3>Blackwork - Costas</h3>
+                    <p>Artista: João Silva</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="/js/script.js"></script>
+
 
         <!-- Booking Section -->
       <section id="artists" class="artists reveal-section">

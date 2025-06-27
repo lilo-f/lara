@@ -1,3 +1,238 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const animationDuration = 500; // Duração da animação em milissegundos (0.5s)
+
+    // Garante que todos os itens estejam visíveis no início
+    galleryItems.forEach(item => {
+        item.classList.add('visible-state');
+    });
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            const filterValue = this.dataset.filter;
+
+            galleryItems.forEach(item => {
+                const itemStyles = item.dataset.style.split(' ');
+                const itemArtist = item.dataset.artist;
+                const itemBodyPart = item.dataset.bodyPart;
+
+                let shouldBeVisible = false;
+
+                if (filterValue === 'all') {
+                    shouldBeVisible = true;
+                } else if (filterValue.startsWith('artist-')) {
+                    const artistFilter = filterValue.substring(7);
+                    shouldBeVisible = itemArtist === artistFilter;
+                } else if (filterValue === 'arm' || filterValue === 'leg' || filterValue === 'back') {
+                    shouldBeVisible = itemBodyPart === filterValue;
+                } else {
+                    shouldBeVisible = itemStyles.includes(filterValue);
+                }
+
+                // Aplica as classes diretamente para mostrar/ocultar
+                if (shouldBeVisible) {
+                    item.classList.remove('hidden-state');
+                    item.classList.add('visible-state');
+                } else {
+                    item.classList.remove('visible-state');
+                    item.classList.add('hidden-state');
+                }
+            });
+        });
+    });
+});
+// Quiz Logic
+document.addEventListener('DOMContentLoaded', function() {
+    const quizIntro = document.getElementById('quiz-intro');
+    const quizQuestions = document.getElementById('quiz-questions');
+    const quizResult = document.getElementById('quiz-result');
+    const startButton = document.getElementById('start-quiz');
+    const questionContainer = document.getElementById('question-container');
+    const progressBar = document.getElementById('quiz-progress');
+    const currentQNumber = document.getElementById('current-q-number');
+    const totalQuestions = document.getElementById('total-questions');
+    const restartButton = document.getElementById('restart-quiz');
+    
+    let currentQuestion = 0;
+    let userAnswers = [];
+    let styleScores = {};
+    
+    // Initialize quiz
+    function initQuiz() {
+        currentQuestion = 0;
+        userAnswers = [];
+        styleScores = {};
+        quizIntro.style.display = 'block';
+        quizQuestions.style.display = 'none';
+        quizResult.style.display = 'none';
+        
+        // Set total questions
+        totalQuestions.textContent = tattooQuiz.questions.length;
+    }
+    
+    // Start quiz
+    startButton.addEventListener('click', function() {
+        quizIntro.style.display = 'none';
+        quizQuestions.style.display = 'block';
+        showQuestion();
+    });
+    
+    // Show question
+    function showQuestion() {
+        const question = tattooQuiz.questions[currentQuestion];
+        
+        // Update progress
+        currentQNumber.textContent = currentQuestion + 1;
+        progressBar.style.width = `${((currentQuestion + 1) / tattooQuiz.questions.length) * 100}%`;
+        
+        // Create question HTML
+        questionContainer.innerHTML = `
+            <div class="question-text">${question.question}</div>
+            <div class="answer-options">
+                ${question.answers.map((answer, index) => `
+                    <div class="answer-option" data-index="${index}">
+                        <div class="option-icon">${answer.icon}</div>
+                        <div class="option-text">${answer.text}</div>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="quiz-navigation">
+                ${currentQuestion > 0 ? `
+                    <button class="nav-button prev-button" id="prev-question">
+                        <svg viewBox="0 0 24 24"><path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z"/></svg>
+                        <span>VOLTAR</span>
+                    </button>
+                ` : '<div></div>'}
+                <button class="nav-button next-button" id="next-question" disabled>
+                    <span>${currentQuestion === tattooQuiz.questions.length - 1 ? 'VER RESULTADO' : 'PRÓXIMA'}</span>
+                    <svg viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/></svg>
+                </button>
+            </div>
+        `;
+        
+        // Add event listeners
+        document.querySelectorAll('.answer-option').forEach(option => {
+            option.addEventListener('click', function() {
+                selectAnswer(this);
+            });
+        });
+        
+        if (currentQuestion > 0) {
+            document.getElementById('prev-question').addEventListener('click', prevQuestion);
+        }
+        
+        document.getElementById('next-question').addEventListener('click', nextQuestion);
+    }
+    
+    // Select answer
+    function selectAnswer(option) {
+        // Deselect all
+        document.querySelectorAll('.answer-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        
+        // Select clicked
+        option.classList.add('selected');
+        
+        // Enable next button
+        document.getElementById('next-question').disabled = false;
+        
+        // Store answer
+        const answerIndex = option.getAttribute('data-index');
+        userAnswers[currentQuestion] = tattooQuiz.questions[currentQuestion].answers[answerIndex];
+    }
+    
+    // Next question
+    function nextQuestion() {
+        if (currentQuestion < tattooQuiz.questions.length - 1) {
+            currentQuestion++;
+            showQuestion();
+        } else {
+            calculateResult();
+        }
+    }
+    
+    // Previous question
+    function prevQuestion() {
+        currentQuestion--;
+        showQuestion();
+    }
+    
+    // Calculate result
+    function calculateResult() {
+        // Reset scores
+        Object.keys(tattooQuiz.results).forEach(style => {
+            styleScores[style] = 0;
+        });
+        
+        // Calculate scores from all answers
+        userAnswers.forEach(answer => {
+            Object.entries(answer.styles).forEach(([style, points]) => {
+                styleScores[style] += points;
+            });
+        });
+        
+        // Find highest score
+        let maxScore = 0;
+        let resultStyle = "";
+        
+        Object.entries(styleScores).forEach(([style, score]) => {
+            if (score > maxScore) {
+                maxScore = score;
+                resultStyle = style;
+            }
+        });
+        
+        // Show result
+        showResult(resultStyle);
+    }
+    
+    // Show result
+    function showResult(style) {
+        const result = tattooQuiz.results[style];
+        
+        // Set result content
+        document.getElementById('result-style').textContent = style;
+        document.getElementById('result-description').textContent = result.description;
+        
+        // Set features
+        const featuresList = document.getElementById('style-features');
+        featuresList.innerHTML = result.features.map(feature => `
+            <li>${feature}</li>
+        `).join('');
+        
+        // Set gallery images
+        const gallery = document.getElementById('result-gallery');
+        gallery.innerHTML = result.images.map(image => `
+            <div class="result-image">
+                <img src="${image}" alt="Exemplo ${style}" loading="lazy">
+            </div>
+        `).join('');
+        
+        // Set recommended artists
+        const artists = document.getElementById('artist-match');
+        artists.innerHTML = result.artists.map(artist => `
+            <div class="artist-badge">${artist}</div>
+        `).join('');
+        
+        // Show result
+        quizQuestions.style.display = 'none';
+        quizResult.style.display = 'block';
+        
+        // Scroll to result
+        quizResult.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Restart quiz
+    restartButton.addEventListener('click', initQuiz);
+    
+    // Initialize
+    initQuiz();
+});
 // DOM Elements
 const loadingScreen = document.getElementById('loading-screen');
 const navbar = document.getElementById('navbar');

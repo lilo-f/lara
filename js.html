@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Ink Studio - Estúdio de Tatuagem</title>
+    <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/js.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Black Ink Studio</h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Início</a>
+                <a href="#about" class="nav-link">Sobre</a>
+                <a href="#services" class="nav-link">Serviços</a>
+                <a href="#portfolio" class="nav-link">Portfólio</a>
+                <a href="#contact" class="nav-link">Contato</a>
+                <a href="#scheduling" class="nav-link">Agendamento</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Transforme sua pele em arte</h1>
+            <p>Estúdio profissional de tatuagem com mais de 10 anos de experiência</p>
+            <button class="cta-button" onclick="scrollToSection('scheduling')">
+                Agendar Consulta
+            </button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2327a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tatuagem artística">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>O Black Ink Studio é um estúdio de tatuagem premium localizado no coração da cidade. Nossa missão é transformar suas ideias em obras de arte únicas e personalizadas.</p>
+                    <p>Com uma equipe de artistas experientes e um ambiente completamente esterilizado, garantimos a melhor experiência em tatuagem.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Tatuagens realizadas</p>
+                    </div>
+                    <div class="stat">
+                        <h3>10+</h3>
+                        <p>Anos de experiência</p>
+                    </div>
+                    <div class="stat">
+                        <h3>100%</h3>
+                        <p>Clientes satisfeitos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Tatuagem Personalizada</h3>
+                    <p>Criamos designs únicos baseados em suas ideias e estilo pessoal</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Cover-up</h3>
+                    <p>Transformamos tatuagens antigas em novas obras de arte</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Retoque</h3>
+                    <p>Restauramos a cor e definição de suas tatuagens</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Desenho Artístico</h3>
+                    <p>Criação de arte personalizada para sua tatuagem</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Nosso Portfólio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tatuagem 1">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1590246814883-57c511a2305b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tatuagem 2">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1611501275019-9ae5aae34277?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tatuagem 3">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tatuagem 4">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tatuagem 5">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1590246814883-57c511a2305b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tatuagem 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scheduling Section -->
+    <section id="scheduling" class="scheduling">
+        <div class="container">
+            <h2>Agendamento</h2>
+            <div class="scheduling-content">
+                <div class="scheduling-info">
+                    <h3>Como funciona?</h3>
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Consulta Inicial</h4>
+                            <p>Discutimos sua ideia e orçamento</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Design</h4>
+                            <p>Criamos o desenho personalizado</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Execução</h4>
+                            <p>Realizamos sua tatuagem com perfeição</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="scheduling-form">
+                    <form id="appointment-form">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Tipo de Serviço</label>
+                            <select id="service" required>
+                                <option value="">Selecione um serviço</option>
+                                <option value="tattoo">Tatuagem Nova</option>
+                                <option value="coverup">Cover-up</option>
+                                <option value="touch">Retoque</option>
+                                <option value="consultation">Consulta</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Data Preferida</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Horário Preferido</label>
+                            <select id="time" required>
+                                <option value="">Selecione um horário</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descrição da Tatuagem</label>
+                            <textarea id="description" rows="4" placeholder="Descreva sua ideia..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Agendar Consulta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Endereço</h4>
+                            <p>Rua das Artes, 123<br>Centro, São Paulo - SP</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(11) 99999-9999</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>contato@blackinkstudio.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horário de Funcionamento</h4>
+                            <p>Segunda a Sexta: 9h às 18h<br>Sábado: 9h às 16h</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-media">
+                    <h4>Nos siga nas redes sociais</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Black Ink Studio</h3>
+                    <p>Transformando pele em arte desde 2014</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <a href="#home">Início</a>
+                    <a href="#about">Sobre</a>
+                    <a href="#services">Serviços</a>
+                    <a href="#portfolio">Portfólio</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>Rua das Artes, 123</p>
+                    <p>(11) 99999-9999</p>
+                    <p>contato@blackinkstudio.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Black Ink Studio. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-toggle" id="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-container" id="chat-container">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i class="fas fa-robot"></i>
+                    <div>
+                        <h4>TattooBot IA</h4>
+                        <span>Online • FAQ</span>
+                    </div>
+                </div>
+                <button class="chat-close" id="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-content" id="chat-content">
+                <div class="chat-categories" id="chat-categories">
+                    <p>Escolha uma categoria para ver as perguntas frequentes:</p>
+                    <div class="category-buttons">
+                        <button class="category-btn" onclick="showCategory('precos')">Preços</button>
+                        <button class="category-btn" onclick="showCategory('procedimento')">Procedimento</button>
+                        <button class="category-btn" onclick="showCategory('cuidados')">Cuidados</button>
+                        <button class="category-btn" onclick="showCategory('estilos')">Estilos</button>
+                        <button class="category-btn" onclick="showCategory('agendamento')">Agendamento</button>
+                        <button class="category-btn" onclick="showCategory('tempo')">Tempo</button>
+                    </div>
+                </div>
+                <div class="chat-questions" id="chat-questions" style="display: none;">
+                    <div class="back-button">
+                        <button onclick="showCategories()">← Voltar</button>
+                    </div>
+                    <div id="questions-list"></div>
+                </div>
+                <div class="chat-answer" id="chat-answer" style="display: none;">
+                    <div class="back-button">
+                        <button onclick="showQuestions()">← Voltar</button>
+                    </div>
+                    <div id="answer-content"></div>
+                    <button class="btn-primary" onclick="showCategories()">Ver Outras Perguntas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- Botão de subir para o topo -->
+    <button id="back-to-top" class="back-to-top" title="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-toggle" id="chat-toggle">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-container" id="chat-container">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i class="fas fa-robot"></i>
+                    <div>
+                        <h4>TattooBot IA</h4>
+                        <span>Online • FAQ</span>
+                    </div>
+                </div>
+                <button class="chat-close" id="chat-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-content" id="chat-content">
+                <div class="chat-categories" id="chat-categories">
+                    <p>Escolha uma categoria para ver as perguntas frequentes:</p>
+                    <div class="category-buttons">
+                        <button class="category-btn" onclick="showCategory('precos')">Preços</button>
+                        <button class="category-btn" onclick="showCategory('procedimento')">Procedimento</button>
+                        <button class="category-btn" onclick="showCategory('cuidados')">Cuidados</button>
+                        <button class="category-btn" onclick="showCategory('estilos')">Estilos</button>
+                        <button class="category-btn" onclick="showCategory('agendamento')">Agendamento</button>
+                        <button class="category-btn" onclick="showCategory('tempo')">Tempo</button>
+                    </div>
+                </div>
+                <div class="chat-questions" id="chat-questions" style="display: none;">
+                    <div class="back-button">
+                        <button onclick="showCategories()">← Voltar</button>
+                    </div>
+                    <div id="questions-list"></div>
+                </div>
+                <div class="chat-answer" id="chat-answer" style="display: none;">
+                    <div class="back-button">
+                        <button onclick="showQuestions()">← Voltar</button>
+                    </div>
+                    <div id="answer-content"></div>
+                    <button class="btn-primary" onclick="showCategories()">Ver Outras Perguntas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/js.js"></script>
+    <script>
+        // Função para mostrar o widget de chat
+        function showChatWidget() {
+            const chatContainer = document.getElementById('chat-container');
+            chatContainer.classList.add('active');
+            document.getElementById('chat-toggle').style.display = 'none';
+        }
+        
+        // Botão de voltar ao topo
+        window.addEventListener('scroll', function() {
+            var backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    <script src="/js/js.js"></script>
+
+</body>
+</html>

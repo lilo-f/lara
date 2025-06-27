@@ -1,0 +1,209 @@
+/* Importa as variáveis do seu style.css */
+@import url('style.css');
+
+.simulator-container {
+    background: var(--gradient-dark);
+    color: var(--text-light);
+    padding: 3rem 1.5rem;
+    margin: 2rem auto;
+    max-width: 1400px;
+    border-radius: 15px;
+    box-shadow: var(--soft-glow-blue);
+    border: 1px solid var(--soft-blue);
+    text-align: center;
+}
+
+.simulator-container .section-title {
+    margin-bottom: 2rem;
+    color: var(--soft-green); /* Destaque o título do simulador */
+    text-shadow: var(--text-glow-green);
+}
+
+.controls-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: var(--dark-gray);
+    border-radius: 10px;
+    border: 1px solid var(--medium-gray);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.control-group label {
+    font-family: var(--font-tech);
+    font-size: 1rem;
+    color: var(--soft-blue);
+    margin-bottom: 0.5rem;
+}
+
+.cta-button {
+    cursor: pointer;
+    background: var(--gradient-soft);
+    color: var(--primary-black);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-family: var(--font-secondary);
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--soft-glow-blue);
+}
+
+.cta-button:hover {
+    background: var(--soft-green);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+}
+
+.skin-tone-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.skin-tone-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.skin-tone-box.selected {
+    border-color: var(--soft-green);
+    box-shadow: var(--soft-glow-green);
+    transform: scale(1.1);
+}
+
+.tattoo-previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.preloaded-tattoo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border: 2px solid var(--medium-gray);
+    border-radius: 8px;
+    cursor: grab;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.preloaded-tattoo:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: var(--soft-glow-blue);
+}
+
+.simulator-area {
+    position: relative;
+    width: 100%;
+    max-width: 700px; /* Ajuste o tamanho máximo do modelo de corpo */
+    margin: 0 auto;
+    aspect-ratio: 1/1.5; /* Proporção para um corpo humano vertical */
+    border: 2px solid var(--soft-blue);
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--secondary-black);
+    box-shadow: var(--neon-glow-blue);
+    display: flex; /* Para centralizar o modelo do corpo */
+    justify-content: center;
+    align-items: center;
+}
+
+.body-model {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Garante que a imagem do corpo caiba */
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Filtros para tom de pele, ajuste conforme suas imagens */
+.body-model.light { filter: brightness(1); }
+.body-model.medium { filter: brightness(0.85); }
+.body-model.dark { filter: brightness(0.7); }
+
+
+.tattoo-placement-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Garante que a tatuagem não saia da área */
+}
+
+.draggable-tattoo {
+    position: absolute;
+    cursor: grab;
+    touch-action: none; /* Desativa o gesto padrão de rolagem em dispositivos touch */
+    max-width: 150px; /* Tamanho inicial da tatuagem */
+    max-height: 150px;
+    object-fit: contain;
+    transition: box-shadow 0.2s ease;
+    border: 1px dashed transparent; /* Borda para indicar arrasto */
+}
+
+.draggable-tattoo:hover,
+.draggable-tattoo.dragging {
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.7); /* Glow ao arrastar */
+    border-color: var(--soft-green);
+}
+
+.resize-handle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--soft-green);
+    border: 1px solid var(--primary-black);
+    border-radius: 50%;
+    cursor: nwse-resize; /* Cursor para redimensionar */
+    z-index: 10;
+}
+
+.rotate-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--soft-blue);
+    border: 1px solid var(--primary-black);
+    border-radius: 50%;
+    cursor: grab; /* Cursor para rotação */
+    z-index: 10;
+}
+
+/* Posição dos handles (ajuste conforme necessário) */
+.resize-handle.bottom-right { bottom: -7px; right: -7px; }
+.rotate-handle.top-center { top: -10px; left: 50%; transform: translateX(-50%); }
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    .controls-panel {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .preloaded-tattoos {
+        justify-content: center;
+    }
+
+    .simulator-area {
+        max-width: 90%;
+        height: 60vh; /* Ajuste a altura em telas menores */
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raven Studio - Simulador de Tatuagem</title>
+    <link rel="stylesheet" href="/css/style.css"> <link rel="stylesheet" href="/css/simulator.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Bebas+Neue&family=Teko:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="simulator-container">
+        <h1 class="section-title">Simulador de Tatuagem</h1>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <label for="tattoo-upload" class="cta-button">
+                    <i class="fas fa-upload"></i> Escolher Tatuagem (.png)
+                </label>
+                <input type="file" id="tattoo-upload" accept="image/png" style="display: none;">
+            </div>
+
+            <div class="control-group">
+                <label>Tom de Pele:</label>
+                <div class="skin-tone-options">
+                    <div class="skin-tone-box" data-tone="light" style="background-color: #f0d9c4;"></div>
+                    <div class="skin-tone-box" data-tone="medium" style="background-color: #d1a384;"></div>
+                    <div class="skin-tone-box" data-tone="dark" style="background-color: #8b5e3a;"></div>
+                </div>
+            </div>
+
+            <div class="control-group preloaded-tattoos">
+                <label>Tatuagens Sugeridas:</label>
+                <div class="tattoo-previews">
+                    <img src="https://i.imgur.com/example1.png" alt="Tatuagem 1" class="preloaded-tattoo" draggable="true">
+                    <img src="https://i.imgur.com/example2.png" alt="Tatuagem 2" class="preloaded-tattoo" draggable="true">
+                    <img src="https://i.imgur.com/example3.png" alt="Tatuagem 3" class="preloaded-tattoo" draggable="true">
+                </div>
+            </div>
+        </div>
+
+        <div class="simulator-area">
+            <img src="https://i.imgur.com/male_body_light.png" alt="Modelo de Corpo" id="body-model" class="body-model light">
+            <div id="tattoo-placement-area" class="tattoo-placement-area">
+                </div>
+        </div>
+    </div>
+
+    <script src="js/simulator.js"></script>
+</body>
+</html>

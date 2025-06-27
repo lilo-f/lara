@@ -1,4 +1,8 @@
 /* Contact Page Specific Styles */
+/* Adicione no início do arquivo */
+.form-group {
+    box-sizing: border-box;
+}
 .contact-hero {
     height: 70vh;
 }
@@ -101,16 +105,33 @@
     box-shadow: var(--soft-glow-blue);
 }
 
+/* Atualize o form-row */
 .form-row {
     display: flex;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
+    width: 100%; /* Garante que ocupa toda a largura */
 }
 
+/* Adicione uma regra para o container do formulário */
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--gradient-dark);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--soft-blue);
+    box-shadow: var(--soft-glow-blue);
+    box-sizing: border-box; /* Importante para incluir padding na largura total */
+    width: 100%; /* Garante que não ultrapasse o max-width */
+}
+/* Atualize as regras do form-group */
 .form-group {
     flex: 1;
+    min-width: 0; /* Isso previte que os itens flexíveis cresçam além do container */
     margin-bottom: 1rem;
 }
+
 
 .form-group label {
     display: block;
@@ -131,6 +152,7 @@
     color: #ffffff;
     font-family: var(--font-tech);
     transition: var(--transition-smooth);
+    box-sizing: border-box; /* Garante que padding e borda estão incluídos na largura */
 }
 
 .form-group input:focus,
@@ -146,6 +168,22 @@
     align-items: center;
     margin-top: 1.5rem;
 }
+
+.work-form {
+    background: var(--gradient-dark);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--soft-blue);
+    box-shadow: var(--soft-glow-blue);
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.file-group input[type="file"] {
+    width: 100%;
+    max-width: 100%;
+}
+
 
 .checkbox-group {
     display: flex;

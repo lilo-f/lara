@@ -671,7 +671,7 @@
                 return isValid;
             }
 
-     handleLogin() {
+          handleLogin() {
     if (!this.validateForm('login-form')) return;
 
     const email = document.getElementById('login-email').value;
@@ -681,28 +681,21 @@
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-        // Adicione um console.log para verificar os dados antes de salvar
-        console.log("Usuário encontrado:", user);
-        
-        // Salva o usuário completo no localStorage
         localStorage.setItem('ravenStudioCurrentUser', JSON.stringify(user));
-        
-        // Verifique se os dados foram salvos
-        console.log("Dados salvos no localStorage:", localStorage.getItem('ravenStudioCurrentUser'));
-        
         if (window.userSession) {
             window.userSession.login(user);
         }
+        window.userSession.showNotification('Login realizado com sucesso! Redirecionando...');
         
-        // Redireciona após um breve delay
         setTimeout(() => {
             window.location.href = 'user.html';
-        }, 500);
+        }, 1500);
     } else {
         this.showError(document.getElementById('login-email'), 'E-mail ou senha incorretos');
         this.showError(document.getElementById('login-password'), 'E-mail ou senha incorretos');
     }
 }
+
 handleRegister() {
     if (!this.validateForm('register-form')) return;
 
@@ -717,8 +710,6 @@ handleRegister() {
         avatar: null
     };
 
-    console.log("Novo usuário sendo criado:", userData);
-
     const users = JSON.parse(localStorage.getItem('ravenStudioUsers')) || [];
     const existingUser = users.find(u => u.email === userData.email);
 
@@ -729,18 +720,18 @@ handleRegister() {
 
     users.push(userData);
     localStorage.setItem('ravenStudioUsers', JSON.stringify(users));
-    localStorage.setItem('ravenStudioCurrentUser', JSON.stringify(userData));
     
-    console.log("Usuário cadastrado e logado:", userData);
-
     if (window.userSession) {
         window.userSession.login(userData);
     }
     
+    window.userSession.showNotification('Conta criada com sucesso! Redirecionando...');
+    
     setTimeout(() => {
         window.location.href = 'user.html';
-    }, 500);
+    }, 1500);
 }}
+
         
 
         // Global functions
