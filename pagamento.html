@@ -580,96 +580,6 @@
             transform: translateY(-2px);
         }
 
-        /* New styles for boleto details */
-        .boleto-info {
-            background: rgba(30, 30, 30, 0.8);
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1.5rem;
-            text-align: center;
-        }
-
-        .boleto-info p {
-            margin-bottom: 1rem;
-            color: #d1d5db;
-        }
-
-        .boleto-info .btn-boleto {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #22c55e 0%, #3b82f6 100%);
-            border: none;
-            border-radius: 12px;
-            color: #000;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
-        }
-
-        .boleto-info .btn-boleto:hover {
-            background: #22c55e;
-            transform: translateY(-2px);
-        }
-
-        /* PIX specific styles */
-        .pix-code-container {
-            background: rgba(50, 50, 50, 0.8);
-            border: 1px dashed #3b82f6;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1.5rem 0;
-            word-break: break-all;
-            font-family: 'Space Mono', monospace; /* or similar monospaced font */
-            font-size: 0.9rem;
-            color: #a0aec0;
-        }
-
-        .pix-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .pix-buttons .btn-copy-pix {
-            padding: 0.8rem 1.5rem;
-            background: #22c55e;
-            border: none;
-            border-radius: 8px;
-            color: #000;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        .pix-buttons .btn-copy-pix:hover {
-            background: #16a34a;
-            transform: translateY(-2px);
-        }
-        .pix-buttons .btn-ok {
-            padding: 0.8rem 1.5rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.5);
-            border-radius: 8px;
-            color: #3b82f6;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        .pix-buttons .btn-ok:hover {
-            background: rgba(59, 130, 246, 0.2);
-            transform: translateY(-2px);
-        }
-
-
         @keyframes alertShow {
             from {
                 opacity: 0;
@@ -733,6 +643,7 @@
     <div class="checkout-bg"></div>
     <div class="checkout-particles" id="particles-js"></div>
     
+    <!-- Custom Alert -->
     <div class="alert-overlay" id="alert-overlay"></div>
     <div class="custom-alert" id="custom-alert">
         <div class="alert-icon" id="alert-icon">
@@ -773,6 +684,7 @@
 
         <div class="checkout-content">
             <div class="checkout-forms">
+                <!-- Dados Pessoais -->
                 <div class="checkout-section active" id="personal-data">
                     <div class="section-header">
                         <div class="icon">
@@ -817,6 +729,7 @@
                     </div>
                 </div>
 
+                <!-- Endereço -->
                 <div class="checkout-section" id="address-data">
                     <div class="section-header">
                         <div class="icon">
@@ -827,7 +740,8 @@
 
                     <div id="saved-addresses-container" style="display: none;">
                         <div class="saved-addresses" id="saved-addresses">
-                            </div>
+                            <!-- Endereços salvos serão inseridos aqui -->
+                        </div>
                         <button type="button" id="new-address-btn" class="btn-secondary" style="margin-bottom: 2rem;">
                             <i class="fas fa-plus"></i> Usar Novo Endereço
                         </button>
@@ -934,6 +848,7 @@
                     </div>
                 </div>
 
+                <!-- Pagamento -->
                 <div class="checkout-section" id="payment-data">
                     <div class="section-header">
                         <div class="icon">
@@ -1002,15 +917,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div id="boleto-details" class="boleto-info" style="display: none;">
-                        <i class="fas fa-info-circle" style="color: #3b82f6; font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <p>O boleto bancário será gerado após a finalização do seu pedido.</p>
-                        <p>Você poderá pagar em qualquer banco, casa lotérica ou aplicativo de banco até a data de vencimento.</p>
-                        <button class="btn-boleto" onclick="alert('Funcionalidade de geração de boleto aqui!')">
-                            <i class="fas fa-print"></i> Gerar Boleto
-                        </button>
-                    </div>
                     
                     <div class="checkout-actions">
                         <button class="btn-secondary" onclick="previousStep()">
@@ -1022,6 +928,7 @@
                     </div>
                 </div>
 
+                <!-- Confirmação -->
                 <div class="checkout-section" id="confirmation-data">
                     <div class="section-header">
                         <div class="icon">
@@ -1031,13 +938,14 @@
                     </div>
                     
                     <div id="order-summary">
-                        </div>
+                        <!-- Resumo do pedido será inserido aqui -->
+                    </div>
                     
                     <div class="checkout-actions">
                         <button class="btn-secondary" onclick="previousStep()">
                             <i class="fas fa-arrow-left"></i> Voltar
                         </button>
-                        <button class="btn-primary" onclick="checkout.finishOrder()">
+                        <button class="btn-primary" onclick="finishOrder()">
                             <i class="fas fa-check"></i> Finalizar Pedido
                         </button>
                     </div>
@@ -1047,7 +955,8 @@
             <div class="checkout-summary">
                 <h3 class="summary-title">RESUMO DO PEDIDO</h3>
                 <div id="order-items">
-                    </div>
+                    <!-- Itens do pedido serão inseridos aqui -->
+                </div>
                 <div class="summary-totals">
                     <div class="summary-row">
                         <span>Subtotal:</span>
@@ -1207,17 +1116,10 @@
                         radio.checked = true;
                         
                         const cardDetails = document.getElementById('card-details');
-                        const boletoDetails = document.getElementById('boleto-details');
-                        
                         if (radio.value === 'credit' || radio.value === 'debit') {
                             cardDetails.style.display = 'block';
-                            boletoDetails.style.display = 'none';
-                        } else if (radio.value === 'boleto') {
+                        } else {
                             cardDetails.style.display = 'none';
-                            boletoDetails.style.display = 'block';
-                        } else { // For PIX and others, hide both
-                            cardDetails.style.display = 'none';
-                            boletoDetails.style.display = 'none';
                         }
                     });
                 });
@@ -1407,12 +1309,6 @@
                 const alertIcon = document.getElementById('alert-icon');
                 const alertTitle = document.getElementById('alert-title');
                 const alertMessage = document.getElementById('alert-message');
-                const alertButton = document.getElementById('alert-button');
-
-                // Reset content for generic alert
-                alertButton.style.display = 'block'; // Show default OK button
-                alertButton.textContent = 'OK';
-                alertButton.onclick = closeAlert; // Default close action
 
                 // Set icon based on type
                 alertIcon.className = `alert-icon ${type}`;
@@ -1432,66 +1328,6 @@
             }
 
             finishOrder() {
-                if (!this.validateCurrentStep()) {
-                    return;
-                }
-
-                const paymentMethod = document.querySelector('input[name="payment"]:checked');
-                
-                if (paymentMethod && paymentMethod.value === 'pix') {
-                    this._showPixPaymentDetailsAndFinalize();
-                } else {
-                    this._finalizeOrderAndRedirect();
-                }
-            }
-
-            _showPixPaymentDetailsAndFinalize() {
-                const alertOverlay = document.getElementById('alert-overlay');
-                const customAlert = document.getElementById('custom-alert');
-                const alertIcon = document.getElementById('alert-icon');
-                const alertTitle = document.getElementById('alert-title');
-                const alertMessage = document.getElementById('alert-message');
-                const alertButton = document.getElementById('alert-button'); // This will be the "OK" button
-                
-                // Generate a simulated PIX code (example: random string)
-                const pixCode = '00020126580014BR.GOV.BCB.PIX0136' + 
-                                Math.random().toString(36).substring(2, 18).toUpperCase() + 
-                                '5204000053039865405' + (this.calculateSubtotal() + this.shippingCost).toString().padStart(6, '0') +
-                                '5802BR5913FULANO DE TAL6008CIDADE SP62070503***63041A2B';
-
-                alertIcon.className = 'alert-icon';
-                alertIcon.innerHTML = '<i class="fas fa-qrcode" style="color: #22c55e;"></i>'; // Green QR code icon
-                alertTitle.textContent = 'Pagamento via PIX';
-                alertMessage.innerHTML = `
-                    <p>Utilize o código abaixo para realizar o pagamento do seu pedido no valor de <strong>${this.formatPrice(this.calculateSubtotal() + this.shippingCost)}</strong>. Após o pagamento, a compra será confirmada automaticamente.</p>
-                    <div class="pix-code-container" id="pix-code">${pixCode}</div>
-                    <div class="pix-buttons">
-                        <button class="btn-copy-pix" id="copy-pix-button">
-                            <i class="fas fa-copy"></i> Copiar Código PIX
-                        </button>
-                        <button class="btn-ok" id="close-pix-alert">OK, entendi</button>
-                    </div>
-                `;
-                
-                // Hide default alert button as we have custom buttons
-                alertButton.style.display = 'none';
-
-                alertOverlay.classList.add('show');
-                customAlert.classList.add('show');
-
-                document.getElementById('copy-pix-button').onclick = async () => {
-                    await navigator.clipboard.writeText(pixCode);
-                    this.showAlert('Código Copiado!', 'O código PIX foi copiado para sua área de transferência. Agora realize o pagamento.', 'success');
-                    // After copying, finalize order and redirect
-                    this._finalizeOrderAndRedirect();
-                };
-
-                document.getElementById('close-pix-alert').onclick = () => {
-                    closeAlert(); // Simply close the alert, don't finalize here
-                };
-            }
-
-            _finalizeOrderAndRedirect() {
                 const orderData = {
                     id: 'ORD' + Date.now(),
                     date: new Date().toISOString(),
@@ -1531,11 +1367,10 @@
                 // Clear cart
                 localStorage.removeItem('ravenStudioCart');
 
-                // Show final success alert and redirect
-                this.showAlert('Pedido Finalizado!', 'Seu pedido foi realizado com sucesso! Você será redirecionado para a página da loja.', 'success');
+                this.showAlert('Pedido Finalizado!', 'Seu pedido foi realizado com sucesso! Você receberá um e-mail de confirmação em breve.', 'success');
                 
                 setTimeout(() => {
-                    window.location.href = 'index.html'; // Redirect to main store page
+                    window.location.href = 'perfil.html';
                 }, 2000);
             }
         }
@@ -1674,10 +1509,6 @@
         function closeAlert() {
             document.getElementById('alert-overlay').classList.remove('show');
             document.getElementById('custom-alert').classList.remove('show');
-            // Reset the alert button to default state if needed for next generic use
-            document.getElementById('alert-button').style.display = 'block';
-            document.getElementById('alert-button').textContent = 'OK';
-            document.getElementById('alert-button').onclick = closeAlert;
         }
 
         // Initialize checkout

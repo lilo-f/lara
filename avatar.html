@@ -1006,20 +1006,89 @@
         }
 
         // Save avatar and return to profile
-         function saveAndReturn() {
-    const avatarConfig = { /* suas configurações atuais */ };
-    const svg = document.getElementById('avatar-svg');
+   function saveAndReturn() {
+    // Clonar o SVG para não modificar o original na página
+    const svg = document.getElementById('avatar-svg').cloneNode(true);
+    const avatarContainer = document.querySelector('.avatar-container');
+    
+    // Adicionar o gradiente ao SVG antes de exportar
+    if (avatarConfig.backgroundType === 'gradient' || 
+        avatarConfig.backgroundType === 'nature' || 
+        avatarConfig.backgroundType === 'urban' || 
+        avatarConfig.backgroundType === 'space' || 
+        avatarConfig.backgroundType === 'abstract') {
+        
+        // Criar um elemento de gradiente no SVG
+        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        gradient.id = 'exportGradient';
+        gradient.setAttribute('x1', '0%');
+        gradient.setAttribute('y1', '0%');
+        gradient.setAttribute('x2', '100%');
+        gradient.setAttribute('y2', '100%');
+        
+        // Definir as cores do gradiente baseado no tipo selecionado
+        let stop1, stop2, stop3;
+        switch(avatarConfig.backgroundType) {
+            case 'gradient':
+                // Usar o gradiente selecionado
+                const gradientValue = avatarConfig.backgroundColor;
+                // Extrair cores do gradiente (simplificado)
+                const colors = gradientValue.match(/#[0-9a-f]{6}|#[0-9a-f]{3}/gi);
+                if (colors && colors.length >= 2) {
+                    stop1 = `<stop offset="0%" stop-color="${colors[0]}" />`;
+                    stop2 = colors[2] ? `<stop offset="50%" stop-color="${colors[1]}" />` : '';
+                    stop3 = `<stop offset="100%" stop-color="${colors[colors.length-1]}" />`;
+                } else {
+                    // Fallback para um gradiente azul se não conseguir extrair as cores
+                    stop1 = '<stop offset="0%" stop-color="#667eea" />';
+                    stop3 = '<stop offset="100%" stop-color="#764ba2" />';
+                }
+                break;
+            case 'nature':
+                stop1 = '<stop offset="0%" stop-color="#74b9ff" />';
+                stop2 = '<stop offset="50%" stop-color="#0984e3" />';
+                stop3 = '<stop offset="100%" stop-color="#00b894" />';
+                break;
+            case 'urban':
+                stop1 = '<stop offset="0%" stop-color="#636e72" />';
+                stop3 = '<stop offset="100%" stop-color="#2d3436" />';
+                break;
+            case 'space':
+                stop1 = '<stop offset="0%" stop-color="#2d3436" />';
+                stop2 = '<stop offset="50%" stop-color="#636e72" />';
+                stop3 = '<stop offset="100%" stop-color="#6c5ce7" />';
+                break;
+            case 'abstract':
+                stop1 = '<stop offset="0%" stop-color="#fd79a8" />';
+                stop2 = '<stop offset="50%" stop-color="#fdcb6e" />';
+                stop3 = '<stop offset="100%" stop-color="#6c5ce7" />';
+                break;
+        }
+        
+        gradient.innerHTML = stop1 + stop2 + stop3;
+        defs.appendChild(gradient);
+        svg.insertBefore(defs, svg.firstChild);
+        
+        // Atualizar o fundo do círculo para usar o gradiente
+        const bgCircle = svg.querySelector('circle');
+        bgCircle.setAttribute('fill', 'url(#exportGradient)');
+    } else if (avatarConfig.backgroundType === 'solid') {
+        // Para fundo sólido, apenas atualizar a cor
+        const bgCircle = svg.querySelector('circle');
+        bgCircle.setAttribute('fill', avatarConfig.backgroundColor);
+    }
+    
+    // Continuar com o processo de salvamento
     const svgData = new XMLSerializer().serializeToString(svg);
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     const img = new Image();
     
-    canvas.width = 200;
-    canvas.height = 200;
+    canvas.width = 400;
+    canvas.height = 400;
     
     img.onload = function() {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(img, 0, 0);
         
         const dataURL = canvas.toDataURL('image/png');
@@ -1103,32 +1172,99 @@
 
         // Export avatar as image
            function downloadAvatar() {
-            const svg = document.getElementById('avatar-svg');
-            const svgData = new XMLSerializer().serializeToString(svg);
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const img = new Image();
-            
-            canvas.width = 400;
-            canvas.height = 400;
-            
-            img.onload = function() {
-                ctx.fillStyle = 'white';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(img, 0, 0);
-                
-                canvas.toBlob(function(blob) {
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                       a.download = 'meu-avatar.png';
-                    a.click();
-                    URL.revokeObjectURL(url);
-                });
-            };
-            
-            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+    // Clonar o SVG para não modificar o original na página
+    const svg = document.getElementById('avatar-svg').cloneNode(true);
+    const avatarContainer = document.querySelector('.avatar-container');
+    
+    // Adicionar o gradiente ao SVG antes de exportar
+    if (avatarConfig.backgroundType === 'gradient' || 
+        avatarConfig.backgroundType === 'nature' || 
+        avatarConfig.backgroundType === 'urban' || 
+        avatarConfig.backgroundType === 'space' || 
+        avatarConfig.backgroundType === 'abstract') {
+        
+        // Criar um elemento de gradiente no SVG
+        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+        gradient.id = 'exportGradient';
+        gradient.setAttribute('x1', '0%');
+        gradient.setAttribute('y1', '0%');
+        gradient.setAttribute('x2', '100%');
+        gradient.setAttribute('y2', '100%');
+        
+        // Definir as cores do gradiente baseado no tipo selecionado
+        let stop1, stop2, stop3;
+        switch(avatarConfig.backgroundType) {
+            case 'gradient':
+                // Usar o gradiente selecionado
+                const gradientValue = avatarConfig.backgroundColor;
+                // Extrair cores do gradiente (simplificado)
+                const colors = gradientValue.match(/#[0-9a-f]{6}|#[0-9a-f]{3}/gi);
+                if (colors && colors.length >= 2) {
+                    stop1 = `<stop offset="0%" stop-color="${colors[0]}" />`;
+                    stop2 = colors[2] ? `<stop offset="50%" stop-color="${colors[1]}" />` : '';
+                    stop3 = `<stop offset="100%" stop-color="${colors[colors.length-1]}" />`;
+                } else {
+                    // Fallback para um gradiente azul se não conseguir extrair as cores
+                    stop1 = '<stop offset="0%" stop-color="#667eea" />';
+                    stop3 = '<stop offset="100%" stop-color="#764ba2" />';
+                }
+                break;
+            case 'nature':
+                stop1 = '<stop offset="0%" stop-color="#74b9ff" />';
+                stop2 = '<stop offset="50%" stop-color="#0984e3" />';
+                stop3 = '<stop offset="100%" stop-color="#00b894" />';
+                break;
+            case 'urban':
+                stop1 = '<stop offset="0%" stop-color="#636e72" />';
+                stop3 = '<stop offset="100%" stop-color="#2d3436" />';
+                break;
+            case 'space':
+                stop1 = '<stop offset="0%" stop-color="#2d3436" />';
+                stop2 = '<stop offset="50%" stop-color="#636e72" />';
+                stop3 = '<stop offset="100%" stop-color="#6c5ce7" />';
+                break;
+            case 'abstract':
+                stop1 = '<stop offset="0%" stop-color="#fd79a8" />';
+                stop2 = '<stop offset="50%" stop-color="#fdcb6e" />';
+                stop3 = '<stop offset="100%" stop-color="#6c5ce7" />';
+                break;
         }
+        
+        gradient.innerHTML = stop1 + stop2 + stop3;
+        defs.appendChild(gradient);
+        svg.insertBefore(defs, svg.firstChild);
+        
+        // Atualizar o fundo do círculo para usar o gradiente
+        const bgCircle = svg.querySelector('circle');
+        bgCircle.setAttribute('fill', 'url(#exportGradient)');
+    }
+    
+    // Continuar com o processo de exportação
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+    
+    // Aumentar a resolução para melhor qualidade
+    canvas.width = 800;
+    canvas.height = 800;
+    
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        canvas.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'meu-avatar.png';
+            a.click();
+            URL.revokeObjectURL(url);
+        }, 'image/png');
+    };
+    
+    img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+}
 
         // Reset avatar and return to profile
           function cancelAndReturn() {

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -367,7 +368,49 @@
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
             outline: none;
         }
-        
+        /* Mantenha os estilos existentes e adicione: */
+.page-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.5);
+    border-radius: 8px;
+    color: #d1d5db;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2px;
+}
+
+.page-btn:hover:not(.disabled):not(.active) {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+    color: white;
+}
+
+.page-btn.active {
+    background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%);
+    border-color: transparent;
+    color: #000;
+    font-weight: bold;
+}
+
+.page-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+    grid-column: 1 / -1;
+}
         .search-box i {
             position: absolute;
             left: 1rem;
@@ -532,18 +575,17 @@
         
         <div class="shop-content">
             <!-- Filtros -->
-            <aside class="shop-filters">
-                <div class="filter-group">
-                    <h3>Categorias</h3>
-                    <div class="filter-options">
-                        <div class="filter-option">
-                            <input type="checkbox" id="cat-machines" checked>
-                            <label for="cat-machines">Máquinas</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="cat-ink" checked>
-                            <label for="cat-ink">Tintas</label>
-                        </div>
+       <div class="filter-group">
+    <h3>Categorias</h3>
+    <div class="filter-options">
+        <div class="filter-option">
+            <input type="checkbox" id="cat-machines" checked>
+            <label for="cat-machines">Máquinas</label>
+        </div>
+        <div class="filter-option">
+            <input type="checkbox" id="cat-ink" checked>
+            <label for="cat-ink">Tintas</label>
+        </div>
                         <div class="filter-option">
                             <input type="checkbox" id="cat-needles" checked>
                             <label for="cat-needles">Agulhas</label>
@@ -568,21 +610,17 @@
                     </div>
                 </div>
                 
-                <div class="filter-group">
-                    <h3>Marcas</h3>
-                    <div class="filter-options">
-                        <div class="filter-option">
-                            <input type="checkbox" id="brand-dragon" checked>
-                            <label for="brand-dragon">Dragonhawk</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="brand-kwadron" checked>
-                            <label for="brand-kwadron">Kwadron</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="brand-eternal" checked>
-                            <label for="brand-eternal">Eternal</label>
-                        </div>
+               <div class="filter-group">
+    <h3>Marcas</h3>
+    <div class="filter-options">
+        <div class="filter-option">
+            <input type="checkbox" id="brand-dragon" checked>
+            <label for="brand-dragon">Dragonhawk</label>
+        </div>
+        <div class="filter-option">
+            <input type="checkbox" id="brand-eternal" checked>
+            <label for="brand-eternal">Eternal</label>
+        </div>
                         <div class="filter-option">
                             <input type="checkbox" id="brand-fk" checked>
                             <label for="brand-fk">FK Irons</label>
@@ -620,17 +658,9 @@
                     <!-- Produtos serão inseridos aqui via JavaScript -->
                 </div>
                 
-                <div class="pagination">
-                    <button class="page-btn disabled">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <button class="page-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
+           <div class="pagination">
+    <!-- Os botões serão gerados dinamicamente pelo JavaScript -->
+</div>
             </div>
         </div>
     </main>
@@ -709,370 +739,495 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Inicializar partículas
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 60, density: { enable: true, value_area: 800 } },
-                color: { value: "#3b82f6" },
-                shape: { type: "circle" },
-                opacity: { value: 0.3, random: true },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.2, width: 1 },
-                move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "grab" },
-                    onclick: { enable: true, mode: "push" }
-                }
-            }
-        });
+       // Inicializar partículas
+particlesJS('particles-js', {
+    particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: "#3b82f6" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#3b82f6", opacity: 0.2, width: 1 },
+        move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onhover: { enable: true, mode: "grab" },
+            onclick: { enable: true, mode: "push" }
+        }
+    }
+});
+
+// Dados dos produtos
+const products = [
+    {
+        id: 'prod1',
+        name: 'Máquina de Tatuagem Dragonhawk',
+        category: 'Machines',
+        brand: 'Dragonhawk',
+        price: 24990,
+        oldPrice: 29990,
+        image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e',
+        rating: 4.8,
+        isNew: true,
+        description: 'Máquina rotativa profissional com ajuste de profundidade e velocidade controlável.'
+    },
+    {
+        id: 'prod2',
+        name: 'Tinta Preta Eternal',
+        category: 'Ink',
+        brand: 'Eternal',
+        price: 8990,
+        oldPrice: 9990,
+        image: 'https://images.unsplash.com/photo-1583947581924-a8b1cf315a3d',
+        rating: 4.9,
+        isNew: false,
+        description: 'Tinta preta de alta qualidade com pigmentação intensa e duradoura.'
+    },
+    {
+        id: 'prod3',
+        name: 'Agulhas Descartáveis Kwadron',
+        category: 'Needles',
+        brand: 'Kwadron',
+        price: 4590,
+        image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae',
+        rating: 4.7,
+        isNew: true,
+        description: 'Pacote com 25 agulhas descartáveis esterilizadas para contorno.'
+    },
+    {
+        id: 'prod4',
+        name: 'Fonte Alimentação FK Irons',
+        category: 'Power',
+        brand: 'FK Irons',
+        price: 59990,
+        image: 'https://images.unsplash.com/photo-1551269901-5c5e14c25df7',
+        rating: 4.9,
+        isNew: false,
+        description: 'Fonte de alimentação digital com display LCD e controle preciso de voltagem.'
+    },
+    {
+        id: 'prod5',
+        name: 'Kit Iniciante Tattoo',
+        category: 'Accessories',
+        brand: 'Dragonhawk',
+        price: 34990,
+        oldPrice: 39990,
+        image: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519',
+        rating: 4.6,
+        isNew: true,
+        description: 'Kit completo para iniciantes com máquina, fontes, tintas e acessórios.'
+    },
+    {
+        id: 'prod6',
+        name: 'Tinta Vermelha Eternal',
+        category: 'Ink',
+        brand: 'Eternal',
+        price: 8990,
+        image: 'https://images.unsplash.com/photo-1533038590840-1cde6e668a91',
+        rating: 4.7,
+        isNew: false,
+        description: 'Tinta vermelha vibrante com excelente cobertura e durabilidade.'
+    },
+    {
+        id: 'prod7',
+        name: 'Máquina de Sombra FK Irons',
+        category: 'Machines',
+        brand: 'FK Irons',
+        price: 37990,
+        image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd',
+        rating: 4.9,
+        isNew: false,
+        description: 'Máquina especializada para sombreamento e preenchimento de cores.'
+    },
+    {
+        id: 'prod8',
+        name: 'Luvas Descartáveis',
+        category: 'Accessories',
+        brand: 'Kwadron',
+        price: 1990,
+        image: 'https://images.unsplash.com/photo-1584634731339-252c58ab7354',
+        rating: 4.5,
+        isNew: false,
+        description: 'Pacote com 100 luvas de látex descartáveis para proteção.'
+    }
+];
+
+// Salvar produtos no localStorage se não existirem
+if (!localStorage.getItem('ravenStudioProducts')) {
+    localStorage.setItem('ravenStudioProducts', JSON.stringify(products));
+}
+
+// Classe para gerenciar a loja
+class Shop {
+    constructor() {
+        this.products = JSON.parse(localStorage.getItem('ravenStudioProducts'));
+        this.filteredProducts = [...this.products];
+        this.cart = JSON.parse(localStorage.getItem('ravenStudioCart')) || [];
+        this.currentPage = 1;
+        this.productsPerPage = 8; 
+        this.wishlist = currentUser.wishlist || [];
         
-        // Dados dos produtos (em uma aplicação real, viriam de uma API)
-        const products = [
-            {
-                id: 'prod1',
-                name: 'Máquina de Tatuagem Dragonhawk',
-                category: 'Machines',
-                brand: 'Dragonhawk',
-                price: 24990, // R$ 249,90 em centavos
-                oldPrice: 29990,
-                image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e',
-                rating: 4.8,
-                isNew: true,
-                description: 'Máquina rotativa profissional com ajuste de profundidade e velocidade controlável.'
-            },
-            {
-                id: 'prod2',
-                name: 'Tinta Preta Eternal',
-                category: 'Ink',
-                brand: 'Eternal',
-                price: 8990, // R$ 89,90 em centavos
-                oldPrice: 9990,
-                image: 'https://images.unsplash.com/photo-1583947581924-a8b1cf315a3d',
-                rating: 4.9,
-                isNew: false,
-                description: 'Tinta preta de alta qualidade com pigmentação intensa e duradoura.'
-            },
-            {
-                id: 'prod3',
-                name: 'Agulhas Descartáveis Kwadron',
-                category: 'Needles',
-                brand: 'Kwadron',
-                price: 4590, // R$ 45,90 em centavos
-                image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae',
-                rating: 4.7,
-                isNew: true,
-                description: 'Pacote com 25 agulhas descartáveis esterilizadas para contorno.'
-            },
-            {
-                id: 'prod4',
-                name: 'Fonte Alimentação FK Irons',
-                category: 'Power',
-                brand: 'FK Irons',
-                price: 59990, // R$ 599,90 em centavos
-                image: 'https://images.unsplash.com/photo-1551269901-5c5e14c25df7',
-                rating: 4.9,
-                isNew: false,
-                description: 'Fonte de alimentação digital com display LCD e controle preciso de voltagem.'
-            },
-            {
-                id: 'prod5',
-                name: 'Kit Iniciante Tattoo',
-                category: 'Accessories',
-                brand: 'Dragonhawk',
-                price: 34990, // R$ 349,90 em centavos
-                oldPrice: 39990,
-                image: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519',
-                rating: 4.6,
-                isNew: true,
-                description: 'Kit completo para iniciantes com máquina, fontes, tintas e acessórios.'
-            },
-            {
-                id: 'prod6',
-                name: 'Tinta Vermelha Eternal',
-                category: 'Ink',
-                brand: 'Eternal',
-                price: 8990, // R$ 89,90 em centavos
-                image: 'https://images.unsplash.com/photo-1533038590840-1cde6e668a91',
-                rating: 4.7,
-                isNew: false,
-                description: 'Tinta vermelha vibrante com excelente cobertura e durabilidade.'
-            },
-            {
-                id: 'prod7',
-                name: 'Máquina de Sombra FK Irons',
-                category: 'Machines',
-                brand: 'FK Irons',
-                price: 37990, // R$ 379,90 em centavos
-                image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd',
-                rating: 4.9,
-                isNew: false,
-                description: 'Máquina especializada para sombreamento e preenchimento de cores.'
-            },
-            {
-                id: 'prod8',
-                name: 'Luvas Descartáveis',
-                category: 'Accessories',
-                brand: 'Kwadron',
-                price: 1990, // R$ 19,90 em centavos
-                image: 'https://images.unsplash.com/photo-1584634731339-252c58ab7354',
-                rating: 4.5,
-                isNew: false,
-                description: 'Pacote com 100 luvas de látex descartáveis para proteção.'
-            }
-        ];
+        this.init();
+    }
+ updatePagination() {
+        const totalPages = Math.ceil(this.filteredProducts.length / this.productsPerPage);
+        const paginationContainer = document.querySelector('.pagination');
         
-        // Classe para gerenciar a loja
-        class Shop {
-            constructor() {
-                this.products = products;
-                this.filteredProducts = [...products];
-                this.cart = JSON.parse(localStorage.getItem('ravenStudioCart')) || [];
-                this.wishlist = JSON.parse(localStorage.getItem('ravenStudioWishlist')) || [];
-                
-                this.init();
-            }
-            
-            init() {
-                this.renderProducts();
-                this.setupEventListeners();
-            }
-            
-            renderProducts() {
-                const container = document.getElementById('products-grid');
-                container.innerHTML = '';
-                
-                if (this.filteredProducts.length === 0) {
-                    container.innerHTML = `
-                        <div class="empty-shop" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                            <i class="fas fa-search" style="font-size: 3rem; color: rgba(59, 130, 246, 0.5); margin-bottom: 1.5rem;"></i>
-                            <h3 style="font-family: 'Bebas Neue', cursive; color: white; font-size: 1.8rem; margin-bottom: 1rem;">Nenhum produto encontrado</h3>
-                            <p style="font-family: 'Orbitron', sans-serif; color: #d1d5db; margin-bottom: 2rem;">Tente ajustar seus filtros de busca</p>
-                            <button class="empty-cart-btn" id="reset-filters-btn" style="padding: 1rem 2rem; background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%); border: none; border-radius: 12px; color: #000; font-weight: 700; font-family: 'Bebas Neue', cursive; cursor: pointer; transition: all 0.3s ease; font-size: 1.1rem; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);">
-                                LIMPAR FILTROS
-                            </button>
-                        </div>
-                    `;
-                    return;
-                }
-                
-                this.filteredProducts.forEach(product => {
-                    const isInWishlist = this.wishlist.includes(product.id);
-                    const isInCart = this.cart.some(item => item.id === product.id);
-                    
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card';
-                    productCard.innerHTML = `
-                        ${product.isNew ? '<span class="product-badge">NOVO</span>' : ''}
-                        <div class="product-image">
-                            <img src="${product.image}" alt="${product.name}">
-                        </div>
-                        <div class="product-info">
-                            <span class="product-category">${product.category}</span>
-                            <h3 class="product-title">${product.name}</h3>
-                            <p class="product-description">${product.description}</p>
-                            <div class="product-price">
-                                ${this.formatPrice(product.price)}
-                                ${product.oldPrice ? `<span class="old-price">${this.formatPrice(product.oldPrice)}</span>` : ''}
-                            </div>
-                            <div class="product-actions">
-                                <button class="add-to-cart" data-id="${product.id}" ${isInCart ? 'disabled' : ''}>
-                                    <i class="fas fa-shopping-cart"></i>
-                                    ${isInCart ? 'NO CARRINHO' : 'ADICIONAR'}
-                                </button>
-                                <button class="wishlist-btn ${isInWishlist ? 'active' : ''}" data-id="${product.id}">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    
-                    container.appendChild(productCard);
-                });
-            }
-            
-            formatPrice(priceInCents) {
-                // Converte de centavos para reais e formata
-                return (priceInCents / 100).toLocaleString('pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
-                    minimumFractionDigits: 2
-                });
-            }
-            
-            filterProducts() {
-                // Em uma aplicação real, isso seria mais complexo com filtros reais
-                // Aqui é apenas uma demonstração
-                const searchInput = document.getElementById('search-input').value.toLowerCase();
-                const sortBy = document.getElementById('sort-by').value;
-                
-                this.filteredProducts = this.products.filter(product => 
-                    product.name.toLowerCase().includes(searchInput) ||
-                    product.description.toLowerCase().includes(searchInput)
-                );
-                
-                // Ordenação
-                switch (sortBy) {
-                    case 'price-low':
-                        this.filteredProducts.sort((a, b) => a.price - b.price);
-                        break;
-                    case 'price-high':
-                        this.filteredProducts.sort((a, b) => b.price - a.price);
-                        break;
-                    case 'newest':
-                        this.filteredProducts.sort((a, b) => b.isNew - a.isNew);
-                        break;
-                    case 'rating':
-                        this.filteredProducts.sort((a, b) => b.rating - a.rating);
-                        break;
-                    default: // 'popular'
-                        this.filteredProducts.sort((a, b) => b.rating - a.rating);
-                }
-                
-                this.renderProducts();
-            }
-            
-            addToCart(productId) {
-                const product = this.products.find(p => p.id === productId);
-                
-                if (product) {
-                    const cartItem = {
-                        id: product.id,
-                        name: product.name,
-                        price: product.price,
-                        image: product.image,
-                        quantity: 1
-                    };
-                    
-                    this.cart.push(cartItem);
-                    localStorage.setItem('ravenStudioCart', JSON.stringify(this.cart));
-                    
-                    // Mostrar notificação
-                    this.showNotification(`${product.name} foi adicionado ao carrinho!`);
-                    
-                    // Atualizar a exibição
-                    this.renderProducts();
-                }
-            }
-            
-            toggleWishlist(productId) {
-                const index = this.wishlist.indexOf(productId);
-                
-                if (index === -1) {
-                    this.wishlist.push(productId);
-                    this.showNotification('Produto adicionado à lista de desejos!');
-                } else {
-                    this.wishlist.splice(index, 1);
-                    this.showNotification('Produto removido da lista de desejos!');
-                }
-                
-                localStorage.setItem('ravenStudioWishlist', JSON.stringify(this.wishlist));
-                this.renderProducts();
-            }
-            
-            showNotification(message) {
-                const notification = document.createElement('div');
-                notification.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: linear-gradient(135deg, #3b82f6, #22c55e);
-                    color: #000;
-                    padding: 1rem 2rem;
-                    border-radius: 10px;
-                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-                    z-index: 1000;
-                    font-family: 'Bebas Neue', cursive;
-                    font-size: 1.2rem;
-                    animation: slideIn 0.3s ease-out;
-                `;
-                notification.innerHTML = `
-                    <i class="fas fa-check-circle"></i> ${message}
-                `;
-                document.body.appendChild(notification);
-                
-                // Remover notificação após 3 segundos
-                setTimeout(() => {
-                    notification.style.animation = 'slideOut 0.3s ease-out';
-                    setTimeout(() => {
-                        notification.remove();
-                    }, 300);
-                }, 3000);
-            }
-            
-            setupEventListeners() {
-                // Filtro de busca
-                document.getElementById('search-input').addEventListener('input', () => {
-                    this.filterProducts();
-                });
-                
-                // Ordenação
-                document.getElementById('sort-by').addEventListener('change', () => {
-                    this.filterProducts();
-                });
-                
-                // Botão de adicionar ao carrinho (delegação de eventos)
-                document.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
-                        const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
-                        const productId = button.dataset.id;
-                        this.addToCart(productId);
-                    }
-                    
-                    // Botão de lista de desejos
-                    if (e.target.classList.contains('wishlist-btn') || e.target.closest('.wishlist-btn')) {
-                        const button = e.target.classList.contains('wishlist-btn') ? e.target : e.target.closest('.wishlist-btn');
-                        const productId = button.dataset.id;
-                        this.toggleWishlist(productId);
-                    }
-                    
-                    // Botão de resetar filtros (quando não há produtos)
-                    if (e.target.id === 'reset-filters-btn' || e.target.closest('#reset-filters-btn')) {
-                        document.getElementById('search-input').value = '';
-                        document.getElementById('sort-by').value = 'popular';
-                        this.filterProducts();
-                    }
-                });
-                
-                // Filtros (demonstração)
-                document.querySelectorAll('.filter-btn').forEach(button => {
-                    button.addEventListener('click', () => {
-                        if (button.classList.contains('apply')) {
-                            this.showNotification('Filtros aplicados com sucesso!');
-                            // Em uma aplicação real, aqui aplicaria os filtros
-                        } else {
-                            // Limpar filtros
-                            document.querySelectorAll('.filter-option input').forEach(input => {
-                                input.checked = true;
-                            });
-                            document.querySelector('.price-range').value = 1000;
-                            this.showNotification('Filtros limpos!');
-                        }
-                    });
-                });
-            }
+        // Limpar paginação existente
+        paginationContainer.innerHTML = '';
+        
+        // Botão Anterior
+        const prevButton = this.createPageButton('prev', 'fas fa-chevron-left');
+        prevButton.disabled = this.currentPage === 1;
+        paginationContainer.appendChild(prevButton);
+        
+        // Números das páginas
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = this.createPageButton(i, '', i === this.currentPage);
+            paginationContainer.appendChild(pageButton);
         }
         
-        // Inicializar a loja quando a página carregar
-        document.addEventListener('DOMContentLoaded', () => {
-            const shop = new Shop();
+        // Botão Próximo
+        const nextButton = this.createPageButton('next', 'fas fa-chevron-right');
+        nextButton.disabled = this.currentPage === totalPages;
+        paginationContainer.appendChild(nextButton);
+    }
+    init() {
+        this.renderProducts();
+        this.setupEventListeners();
+    }
+  createPageButton(content, iconClass, isActive = false) {
+        const button = document.createElement('button');
+        button.className = `page-btn ${isActive ? 'active' : ''}`;
+        
+        if (iconClass) {
+            const icon = document.createElement('i');
+            icon.className = iconClass;
+            button.appendChild(icon);
+        } else {
+            button.textContent = content;
+        }
+        
+        button.addEventListener('click', () => {
+            if (content === 'prev' && this.currentPage > 1) {
+                this.currentPage--;
+            } else if (content === 'next' && this.currentPage < Math.ceil(this.filteredProducts.length / this.productsPerPage)) {
+                this.currentPage++;
+            } else if (typeof content === 'number') {
+                this.currentPage = content;
+            }
             
-            // Adicionar estilos de animação
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-                @keyframes slideOut {
-                    from { transform: translateX(0); opacity: 1; }
-                    to { transform: translateX(100%); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
+            this.renderProducts();
+            this.updatePagination();
         });
+        
+        return button;
+    }
+ getPaginatedProducts() {
+        const startIndex = (this.currentPage - 1) * this.productsPerPage;
+        const endIndex = startIndex + this.productsPerPage;
+        return this.filteredProducts.slice(startIndex, endIndex);
+    }
+
+    renderProducts() {
+        const container = document.getElementById('products-grid');
+        container.innerHTML = '';
+        
+        const paginatedProducts = this.getPaginatedProducts();
+        
+        if (paginatedProducts.length === 0) {
+            container.innerHTML = `
+                <div class="empty-shop" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                    <i class="fas fa-search" style="font-size: 3rem; color: rgba(59, 130, 246, 0.5); margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-family: 'Bebas Neue', cursive; color: white; font-size: 1.8rem; margin-bottom: 1rem;">Nenhum produto encontrado</h3>
+                    <p style="font-family: 'Orbitron', sans-serif; color: #d1d5db; margin-bottom: 2rem;">Tente ajustar seus filtros de busca</p>
+                    <button class="empty-cart-btn" id="reset-filters-btn" style="padding: 1rem 2rem; background: linear-gradient(135deg, #3b82f6 0%, #22c55e 100%); border: none; border-radius: 12px; color: #000; font-weight: 700; font-family: 'Bebas Neue', cursive; cursor: pointer; transition: all 0.3s ease; font-size: 1.1rem; letter-spacing: 1px; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);">
+                        LIMPAR FILTROS
+                    </button>
+                </div>
+            `;
+            return;
+        }
+        
+        this.filteredProducts.forEach(product => {
+            const isInWishlist = this.wishlist.includes(product.id);
+            const isInCart = this.cart.some(item => item.id === product.id);
+            
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                ${product.isNew ? '<span class="product-badge">NOVO</span>' : ''}
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">${product.category}</span>
+                    <h3 class="product-title">${product.name}</h3>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-price">
+                        ${this.formatPrice(product.price)}
+                        ${product.oldPrice ? `<span class="old-price">${this.formatPrice(product.oldPrice)}</span>` : ''}
+                    </div>
+                    <div class="product-actions">
+                        <button class="add-to-cart" data-id="${product.id}" ${isInCart ? 'disabled' : ''}>
+                            <i class="fas fa-shopping-cart"></i>
+                            ${isInCart ? 'NO CARRINHO' : 'ADICIONAR'}
+                        </button>
+                        <button class="wishlist-btn ${isInWishlist ? 'active' : ''}" data-id="${product.id}">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(productCard);
+        });
+    }
+
+    formatPrice(priceInCents) {
+        return (priceInCents / 100).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+            minimumFractionDigits: 2
+        });
+    }
+
+  // Na função filterProducts(), mantenha a estrutura original mas adicione a lógica de filtro
+filterProducts() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const sortBy = document.getElementById('sort-by').value;
+    
+    // Obter estado atual dos filtros
+    const activeFilters = this.getActiveFilters();
+    
+    // Aplicar filtros
+    this.filteredProducts = this.products.filter(product => {
+        return this.productMatchesFilters(product, searchInput, activeFilters);
+    });
+    
+    // Aplicar ordenação
+    this.sortProducts(sortBy);
+    
+    // Atualizar paginação
+    this.updatePagination();
+    
+    // Renderizar produtos
+    this.renderProducts();
+}
+
+getActiveFilters() {
+    return {
+        categories: this.getSelectedCheckboxes('cat-'),
+        brands: this.getSelectedCheckboxes('brand-'),
+        maxPrice: parseInt(document.querySelector('.price-range').value) * 100 // Convertendo para centavos
+    };
+}
+
+getSelectedCheckboxes(prefix) {
+    const checkboxes = Array.from(document.querySelectorAll(`input[id^="${prefix}"]:checked`));
+    return checkboxes.map(cb => cb.id.replace(prefix, '').toLowerCase());
+}
+
+productMatchesFilters(product, searchTerm, filters) {
+    // Filtro de busca
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm) ||
+                         product.description.toLowerCase().includes(searchTerm);
+    
+    // Filtro de categoria
+    const matchesCategory = filters.categories.length === 0 || 
+                          filters.categories.includes(product.category.toLowerCase());
+    
+    // Filtro de marca
+    const matchesBrand = filters.brands.length === 0 || 
+                        filters.brands.includes(product.brand.toLowerCase());
+    
+    // Filtro de preço
+    const matchesPrice = product.price <= filters.maxPrice;
+    
+    return matchesSearch && matchesCategory && matchesBrand && matchesPrice;
+}
+
+    getSelectedFilters(prefix) {
+        const filters = [];
+        document.querySelectorAll(`input[id^="${prefix}"]:checked`).forEach(checkbox => {
+            filters.push(checkbox.id.replace(prefix, '').toLowerCase());
+        });
+        return filters;
+    }
+
+    sortProducts(sortBy) {
+        switch (sortBy) {
+            case 'price-low':
+                this.filteredProducts.sort((a, b) => a.price - b.price);
+                break;
+            case 'price-high':
+                this.filteredProducts.sort((a, b) => b.price - a.price);
+                break;
+            case 'newest':
+                this.filteredProducts.sort((a, b) => (b.isNew || false) - (a.isNew || false));
+                break;
+            case 'rating':
+                this.filteredProducts.sort((a, b) => b.rating - a.rating);
+                break;
+            default:
+                this.filteredProducts.sort((a, b) => b.rating - a.rating);
+        }
+    }
+    addToCart(productId) {
+        const product = this.products.find(p => p.id === productId);
+        
+        if (product) {
+            const cartItem = {
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                quantity: 1
+            };
+            
+            this.cart.push(cartItem);
+            localStorage.setItem('ravenStudioCart', JSON.stringify(this.cart));
+            
+            this.showNotification(`${product.name} foi adicionado ao carrinho!`);
+            this.renderProducts();
+        }
+    }
+
+    toggleWishlist(productId) {
+        const index = this.wishlist.indexOf(productId);
+        const product = this.products.find(p => p.id === productId);
+        
+        if (index === -1) {
+            this.wishlist.push(productId);
+            this.showNotification(`${product.name} adicionado à lista de desejos!`);
+        } else {
+            this.wishlist.splice(index, 1);
+            this.showNotification(`${product.name} removido da lista de desejos!`);
+        }
+        
+       
+        this.updateUserWishlist();
+       
+    }
+
+    updateUserWishlist() {
+        const currentUser = JSON.parse(localStorage.getItem('ravenStudioCurrentUser')) || {};
+        currentUser.wishlist = this.wishlist;
+        localStorage.setItem('ravenStudioCurrentUser', JSON.stringify(currentUser));
+    }
+
+    showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #3b82f6, #22c55e);
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.2rem;
+            animation: slideIn 0.3s ease-out;
+        `;
+        notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
+   setupEventListeners() {
+    // Busca e ordenação
+    document.getElementById('search-input').addEventListener('input', () => {
+        this.filterProducts();
+    });
+    
+    document.getElementById('sort-by').addEventListener('change', () => {
+        this.filterProducts();
+    });
+    
+    // Filtros de categoria e marca
+    document.querySelectorAll('.filter-option input').forEach(input => {
+        input.addEventListener('change', () => {
+            this.filterProducts();
+        });
+    });
+    
+    // Filtro de preço
+    document.querySelector('.price-range').addEventListener('input', () => {
+        this.filterProducts();
+    });
+    
+    // Botões de filtro
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            if (button.classList.contains('apply')) {
+                this.filterProducts();
+                this.showNotification('Filtros aplicados com sucesso!');
+            } else {
+                // Limpar filtros
+                document.querySelectorAll('.filter-option input').forEach(input => {
+                    input.checked = true;
+                });
+                document.querySelector('.price-range').value = 1000;
+                this.filterProducts();
+                this.showNotification('Filtros limpos!');
+            }
+        });
+    });
+    
+    // Cliques nos produtos
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+            const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+            const productId = button.dataset.id;
+            this.addToCart(productId);
+        }
+        
+        if (e.target.classList.contains('wishlist-btn') || e.target.closest('.wishlist-btn')) {
+            const button = e.target.classList.contains('wishlist-btn') ? e.target : e.target.closest('.wishlist-btn');
+            const productId = button.dataset.id;
+            this.toggleWishlist(productId);
+        }
+        
+        if (e.target.id === 'reset-filters-btn' || e.target.closest('#reset-filters-btn')) {
+            document.getElementById('search-input').value = '';
+            document.getElementById('sort-by').value = 'popular';
+            document.querySelectorAll('.filter-option input').forEach(input => {
+                input.checked = true;
+            });
+            document.querySelector('.price-range').value = 1000;
+            this.filterProducts();
+        }
+    });
+}
+}
+
+// Inicializar a loja quando a página carregar
+document.addEventListener('DOMContentLoaded', () => {
+    const shop = new Shop();
+    
+    // Adicionar estilos de animação
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+});
     </script>
 </body>
 </html>

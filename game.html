@@ -5,10 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raven Studio - Ink Adventure</title>
     <link rel="stylesheet" href="/css/game.css">
+      <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Metal+Mania&display=swap" rel="stylesheet">
-    
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Bebas+Neue&family=Teko:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+
+        <!-- Adicionar logo após a abertura do body -->
+<a href="#main" class="skip-link">Pular para conteúdo principal</a>
+ <!-- Loading Screen -->
+<div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+        <div class="loading-logo">
+            <img src="/img/Logo.png" alt="Raven Studio Logo" class="brand-image">
+            <h2>RAVEN STUDIO</h2>
+        </div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <p class="loading-text">Preparando sua experiência...</p>
+    </div>
+</div>
     <div id="gameContainer">
         <!-- Header com logo e stats -->
         <header id="gameHeader">
@@ -131,7 +152,7 @@
             </div>
         </div>
     </div>
-
+ <script src="/js/home.js"></script>
     <script src="/js/game.js"></script>
 </body>
 </html>
