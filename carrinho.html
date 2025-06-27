@@ -306,7 +306,8 @@
         }
 
         .coupon-input input {
-            flex: 1;
+            width: 100%; /* Changed from flex: 1; */
+            flex-grow: 1; /* Allows it to grow */
             padding: 0.8rem;
             background: rgba(30, 30, 30, 0.8);
             border: 1px solid rgba(59, 130, 246, 0.5);
@@ -324,6 +325,8 @@
         }
 
         .coupon-btn {
+            flex-shrink: 0; /* Added to prevent shrinking */
+            white-space: nowrap; /* Added to prevent text breaking */
             padding: 0.8rem 1.5rem;
             background: rgba(59, 130, 246, 0.1);
             border: 1px solid rgba(59, 130, 246, 0.5);
@@ -558,10 +561,8 @@
         </header>
         
         <div class="cart-content" id="cart-content">
-            <!-- Conteúdo será inserido via JavaScript -->
-        </div>
+            </div>
     </main>
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -746,11 +747,6 @@
                             </div>
                         ` : ''}
                         
-                        <div class="summary-row total">
-                            <span class="summary-label">TOTAL</span>
-                            <span class="summary-value">${this.formatPrice(total)}</span>
-                        </div>
-                        
                         <div class="coupon-section">
                             <div class="coupon-title">
                                 <i class="fas fa-ticket-alt"></i> CUPOM DE DESCONTO
@@ -785,7 +781,7 @@
                     this.showNotification('Seu carrinho está vazio!', 'error');
                     return;
                 }
-                window.location.href = 'checkout.html';
+                window.location.href = 'pagamento.html'; // CORRIGIDO PARA pagamento.html
             }
 
             updateQuantity(itemId, newQuantity) {
